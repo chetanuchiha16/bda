@@ -1,0 +1,96 @@
+[
+  {
+    "question_id": 1,
+    "title": "Summer 2024 Thermal Extremes & Heatwave Severity in Bengaluru",
+    "question": "What were the highest recorded temperatures, which month experienced peak heat, and how many days exceeded 30\u00b0C daily mean?",
+    "findings": {
+      "peak_temperature_c": 32.38,
+      "peak_temperature_date": "2024-04-18",
+      "hottest_month": "April",
+      "average_summer_temp_c": 28.65,
+      "days_exceeding_30c": 23,
+      "top_3_hottest_dates": [
+        {
+          "date": "2024-04-18",
+          "temp_c": 32.38,
+          "heat_index": 26.05
+        },
+        {
+          "date": "2024-04-20",
+          "temp_c": 32.29,
+          "heat_index": 25.96
+        },
+        {
+          "date": "2024-04-19",
+          "temp_c": 32.25,
+          "heat_index": 26.24
+        }
+      ]
+    },
+    "interpretation": "During the notable April\u2013May 2024 South Indian heatwave, Bengaluru experienced unusually severe temperatures. The peak daily mean reached 32.38\u00b0C on 2024-04-18. A total of 23 days registered mean temperatures at or above 30.0\u00b0C."
+  },
+  {
+    "question_id": 2,
+    "title": "Monsoon Precipitation Distribution and Extreme Rainfall Events",
+    "question": "How was precipitation partitioned between South-West and North-East monsoon, and what was the single wettest day?",
+    "findings": {
+      "annual_precipitation_mm": 938.76,
+      "sw_monsoon_rainfall_mm": 448.91,
+      "sw_monsoon_share_pct": 47.82,
+      "ne_monsoon_rainfall_mm": 370.25,
+      "ne_monsoon_share_pct": 39.44,
+      "wettest_day_date": "2024-08-12",
+      "wettest_day_rainfall_mm": 73.08,
+      "heavy_rain_days_count": 5
+    },
+    "interpretation": "Bengaluru received 938.76 mm of cumulative rainfall in 2024. The South-West Monsoon contributed 448.91 mm (47.8%), while the North-East retreat monsoon delivered 370.25 mm. The wettest day occurred on 2024-08-12 with 73.08 mm in 24 hours."
+  },
+  {
+    "question_id": 3,
+    "title": "Humidity-Temperature Dynamics and Perceived Thermal Discomfort Index",
+    "question": "How does Relative Humidity influence thermal comfort, and on which dates did the highest Thom Discomfort Index occur?",
+    "findings": {
+      "peak_discomfort_date": "2024-05-03",
+      "peak_heat_index_c": 26.86,
+      "corresponding_temp_c": 32.08,
+      "corresponding_humidity_pct": 46.05,
+      "severe_discomfort_days": 9,
+      "seasonal_avg_humidity": {
+        "Winter": 55.97,
+        "Summer": 46.92,
+        "Monsoon": 78.25,
+        "Post-Monsoon": 83.61
+      }
+    },
+    "interpretation": "The highest perceived discomfort peaked at 26.86\u00b0C on 2024-05-03, combining 32.08\u00b0C with 46.05% relative humidity. Monsoon air sat at high average humidity (79.8%), significantly modifying the physiological sensation of ambient heat."
+  },
+  {
+    "question_id": 4,
+    "title": "Climatological Spell Analysis: Prolonged Dry Spells vs Wet Streaks",
+    "question": "What was the longest consecutive rainless period versus continuous precipitation streaks in Bengaluru?",
+    "findings": {
+      "longest_dry_streak_days": 93,
+      "dry_streak_start": "2024-01-10",
+      "dry_streak_end": "2024-04-11",
+      "longest_wet_streak_days": 24,
+      "total_completely_dry_days": 151
+    },
+    "interpretation": "Bengaluru experienced a severe pre-monsoon dry spell of 93 consecutive rainless days extending from 2024-01-10 through 2024-04-11, leading to city-wide groundwater stress. In contrast, the longest continuous rainy spell spanned 24 consecutive days during the peak monsoon."
+  },
+  {
+    "question_id": 5,
+    "title": "Cross-System Big Data Performance Profiling (Hive Formats & MongoDB Indexes)",
+    "question": "How do columnar storage (RCFile) and B-Tree indexing accelerate analytics compared to row text and full collection scans?",
+    "findings": {
+      "hive_text_avg_seconds": 12.98,
+      "hive_rcfile_avg_seconds": 6.18,
+      "hive_speedup_factor": 2.1,
+      "hive_storage_savings_pct": 66.0,
+      "mongo_collscan_time_ms": 4.85,
+      "mongo_ixscan_time_ms": 0.62,
+      "mongo_speedup_factor": 7.82,
+      "mongo_docs_scanned_reduction": "366 docs -> 2 docs fetched"
+    },
+    "interpretation": "Columnar RCFile reduced Hive query execution time by 52.4% (2.1x speedup) and compressed disk usage by 66.0% through column projection skipping. In MongoDB, compound indexing yielded a 7.82x speedup by eliminating full collection scans."
+  }
+]

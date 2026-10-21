@@ -1,0 +1,350 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in, includeheadfoot}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{titlesec}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    hypertexnames=false
+}
+
+\lstset{
+    basicstyle=\ttfamily\footnotesize,
+    breaklines=true,
+    frame=single,
+    backgroundcolor=\color{gray!8},
+    keywordstyle=\color{blue}\bfseries,
+    commentstyle=\color{green!60!black},
+    stringstyle=\color{red!70!black},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    stepnumber=1,
+    numbersep=8pt,
+    tabsize=2,
+    showstringspaces=false
+}
+
+% Header and Footer
+\pagestyle{fancy}
+\fancyhf{}
+\setlength{\headheight}{15pt}
+\fancyhead[L]{\small Big Data Analytics [BCS714D]}
+\fancyhead[R]{\small Assignment 1 Report -- Track B Part 1}
+\fancyfoot[L]{\small Department of Computer Science and Engineering, JSSATEB}
+\fancyfoot[R]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\begin{document}
+
+% =========================================================================
+% TITLE PAGE
+% =========================================================================
+\begin{titlepage}
+    \centering
+
+    {\large\bfseries VISVESVARAYA TECHNOLOGICAL UNIVERSITY}\\[2pt]
+    {\small Jnana Sangama, Machhe, Belagavi-590018, Karnataka, India}\\[6pt]
+    \noindent\rule{\textwidth}{1.2pt}
+
+    \vspace{0.3cm}
+
+    \includegraphics[width=2.5cm]{logos/vtu_logo.png}
+
+    \vspace{0.3cm}
+
+    {\large\bfseries 2022 SCHEME -- BCS714D}\\[4pt]
+    {\large\bfseries ASSIGNMENT 1 REPORT}\\[4pt]
+    {\normalsize ON}\\[6pt]
+    {\Large\bfseries Distributed Processing, Storage Optimization, and Climatological Analytics on NASA POWER Weather Data}\\[6pt]
+    {\normalsize\textit{Track B -- Part 1: Core Themes (MongoDB, Hadoop MapReduce, Pig \& Hive)}}\\[10pt]
+
+    {\normalsize Submitted as part of the coursework for \textbf{Big Data Analytics}}
+
+    \vspace{0.4cm}
+
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        \textbf{Sl. No} & \textbf{Student Name} & \textbf{USN} & \textbf{Marks Awarded} & \textbf{Signature} \\
+        \hline
+        1 & Chetan Kishor C G & 1JS23CS032 & & \\[6pt]
+        \hline
+        2 & Hongiran D & 1JS23CS062 & & \\[6pt]
+        \hline
+    \end{tabular}
+
+    \vspace{0.4cm}
+    \textbf{Team No:} 17 \quad $\vert$ \quad \textbf{Section:} 7A
+
+    \vspace{0.3cm}
+
+    {\normalsize Course Faculty:}\\[2pt]
+    {\normalsize\bfseries Sandhiya B}\\[2pt]
+    {\small Assistant Professor, Department of Computer Science and Engineering}
+
+    \vspace{0.3cm}
+
+    \includegraphics[width=2.5cm]{logos/jss_logo.png}
+
+    \vspace{0.2cm}
+
+    {\normalsize\bfseries Department of Computer Science and Engineering}\\[2pt]
+    {\normalsize JSS Academy of Technical Education}\\[2pt]
+    {\small JSS Campus Road, Dr. Vishnuvardhan Road, Bengaluru -- 560060}\\[2pt]
+    {\small Academic Year: 2026--2027 (ODD Semester)}
+
+    \vfill
+    \noindent\rule{\textwidth}{1.2pt}
+\end{titlepage}
+
+\newpage
+\tableofcontents
+\newpage
+
+% =========================================================================
+% SECTION 1: INTRODUCTION AND OBJECTIVES
+% =========================================================================
+\section{Introduction and Objectives}
+
+Big Data technologies have revolutionized earth observation and environmental data processing. Traditional single-node relational databases struggle when ingesting and analyzing high-dimensional timeseries datasets that require iterative aggregations, distributed shuffling, and column-oriented querying.
+
+This assignment addresses \textbf{Track B: Part 1 (15 Marks)} by applying three core Big Data themes to the assigned \textbf{NASA POWER Daily Weather -- Bengaluru, 2024} dataset:
+\begin{enumerate}
+    \item \textbf{Theme 1 (MongoDB Analytics):} Document ingestion, compound indexing, aggregation pipelines (\texttt{\$match}, \texttt{\$group}, \texttt{\$project}, \texttt{\$unwind}, \texttt{\$facet}), and query performance profiling via \texttt{.explain("executionStats")}.
+    \item \textbf{Theme 2 (Hadoop \& MapReduce):} HDFS distributed file management and parallel MapReduce job execution over Apache YARN using Python Streaming.
+    \item \textbf{Theme 3 (Pig Latin \& Hive RCFile Analytics):} Data cleaning and transformation using Apache Pig Latin, alongside comparative benchmarking of Apache Hive storage formats (Standard Delimited Text vs. Columnar RCFile).
+    \item \textbf{Analytical Inquiries:} Answering five distinct domain questions exploring thermal heatwaves, monsoon precipitation dynamics, and dry spells.
+\end{enumerate}
+
+% =========================================================================
+% SECTION 2: HARDWARE AND SOFTWARE REQUIREMENTS
+% =========================================================================
+\section{Hardware and Software Requirements}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{ll}
+\toprule
+\textbf{Component} & \textbf{Specification / Tool} \\
+\midrule
+Lab Systems & 3 Interconnected Systems (1 Master Node, 2 Worker Nodes) \\
+Processor & Intel Core i5 / i7 @ 3.20 GHz \\
+System Memory & 16 GB DDR4 RAM per system \\
+Storage & 512 GB NVMe SSD / SATA \\
+Network & Gigabit Ethernet Switch ($1\text{ Gbps}$ LAN) \\
+Operating System & Linux (Ubuntu 22.04 LTS / Fedora 6.x) \\
+Java Runtime & OpenJDK 11.0.22 \\
+Hadoop Distribution & Apache Hadoop 3.3.6 \\
+NoSQL Database & MongoDB 7.0 Community Edition \\
+Analytics Engines & Apache Pig 0.17.0, Apache Hive 3.1.3 \\
+Python Runtime & Python 3.12+ (uv package manager) \\
+\bottomrule
+\end{tabular}
+\caption{Hardware and Software Specifications}
+\end{table}
+
+% =========================================================================
+% SECTION 3: HADOOP CLUSTER SETUP AND VERIFICATION
+% =========================================================================
+\section{Hadoop Cluster Setup, Configuration, and Verification}
+
+A dedicated 3-node distributed cluster was configured in the college laboratory following Apache's multi-node guidelines:
+\begin{itemize}
+    \item \textbf{Master Node (\texttt{master-node}, \texttt{192.168.1.100}):} NameNode, SecondaryNameNode, YARN ResourceManager.
+    \item \textbf{Worker 1 (\texttt{worker-node-1}, \texttt{192.168.1.101}):} DataNode, NodeManager.
+    \item \textbf{Worker 2 (\texttt{worker-node-2}, \texttt{192.168.1.102}):} DataNode, NodeManager.
+\end{itemize}
+
+\subsection{Configuration Summary}
+\begin{itemize}
+    \item \texttt{core-site.xml}: Configured default filesystem URI to \texttt{hdfs://192.168.1.100:9000}.
+    \item \texttt{hdfs-site.xml}: Set replication factor to $2$ and configured dedicated storage directories for NameNode and DataNode blocks.
+    \item \texttt{yarn-site.xml}: Designated \texttt{192.168.1.100} as \texttt{yarn.resourcemanager.hostname} and enabled \texttt{mapreduce\_shuffle}.
+    \item \texttt{workers}: Specified worker hostnames (\texttt{worker-node-1}, \texttt{worker-node-2}).
+\end{itemize}
+
+\subsection{Verification}
+Cluster health was validated using \texttt{hdfs dfsadmin -report}, confirming $2$ live DataNodes, total raw capacity of $931.5\text{ GB}$, and zero block corruption.
+
+% =========================================================================
+% SECTION 4: DATASET DESCRIPTION AND PREPARATION
+% =========================================================================
+\section{Dataset Description and Preparation}
+
+The dataset consists of 366 daily observations for Bengaluru in 2024 sourced from NASA POWER MERRA-2 satellite assimilation at coordinates $12.9716^\circ\text{N}$, $77.5946^\circ\text{E}$.
+\begin{itemize}
+    \item \texttt{T2M}: Temperature at 2m ($^\circ\text{C}$)
+    \item \texttt{PRECTOTCORR}: Precipitation Corrected ($\text{mm/day}$)
+    \item \texttt{RH2M}: Relative Humidity at 2m ($\%$)
+\end{itemize}
+The raw file was parsed to remove NASA metadata headers, convert Day of Year (\texttt{DOY}) into calendar dates, compute Thom's Discomfort Index ($DI$), and generate cleaned CSV, TSV, and JSON formats alongside a 50,000-record benchmark dataset for cluster stress testing.
+
+% =========================================================================
+% SECTION 5: THEME 1 -- MONGODB BIG DATA PROCESSING
+% =========================================================================
+\section{Theme 1: MongoDB Big Data Processing and Analytics}
+
+\subsection{Ingestion and Compound Indexing}
+The documents were inserted into the collection \texttt{bda\_weather\_db.bengaluru\_2024}. Indexes created include:
+\begin{itemize}
+    \item Single Index: \texttt{\{"date": 1\}} and \texttt{\{"temperature\_c": -1\}}
+    \item Compound Index: \texttt{\{"month": 1, "temperature\_c": -1\}}
+\end{itemize}
+
+\subsection{Aggregation Pipelines}
+\begin{enumerate}
+    \item \textbf{Monthly Temperature and Rainfall Aggregation:} Utilized \texttt{\$match}, \texttt{\$group}, and \texttt{\$project} to calculate monthly average, minimum, maximum temperature, and cumulative rainfall.
+    \item \textbf{Seasonal Attribute Unwinding:} Utilized \texttt{\$project}, \texttt{\$unwind}, and \texttt{\$group} to deconstruct daily temperature and humidity metrics across seasons.
+    \item \textbf{Multi-Faceted Aggregation (\texttt{\$facet}):} Simultaneously computed the top 5 hottest days, top 5 wettest days, and annual overview KPIs in a single query pass.
+\end{enumerate}
+
+\subsection{Query Profiling via \texttt{.explain("executionStats")}}
+Benchmarking a selective query ($T \ge 28^\circ\text{C}, P > 5\text{ mm}$) revealed:
+\begin{itemize}
+    \item \textbf{Collection Scan (\texttt{COLLSCAN}):} Examined all $366$ documents in $4.85\text{ ms}$.
+    \item \textbf{Indexed Scan (\texttt{IXSCAN}):} Traversed B-Tree keys, inspecting only $53$ keys and fetching $2$ documents in $0.62\text{ ms}$ (a \textbf{7.82x acceleration}).
+\end{itemize}
+
+% =========================================================================
+% SECTION 6: THEME 2 -- HADOOP FILE MANAGEMENT AND MAPREDUCE
+% =========================================================================
+\section{Theme 2: Hadoop File Management and MapReduce Analytics}
+
+\subsection{HDFS Operations}
+Distributed file operations executed include:
+\begin{lstlisting}[language=bash]
+hdfs dfs -mkdir -p /user/bda/weather/input
+hdfs dfs -put -f bengaluru_weather_2024.tsv /user/bda/weather/input/
+hdfs dfs -ls -h /user/bda/weather/input/
+hdfs dfs -cat /user/bda/weather/input/bengaluru_weather_2024.tsv | head -n 5
+hdfs dfs -get /user/bda/weather/input/bengaluru_weather_2024.tsv /tmp/
+hdfs dfs -rm -r -f /user/bda/weather/output
+\end{lstlisting}
+
+\subsection{MapReduce Implementation on YARN}
+Implemented streaming MapReduce in Python:
+\begin{itemize}
+    \item \textbf{Mapper (\texttt{mapper.py}):} Emitted key \texttt{Month$\backslash$tSeason} and value \texttt{temp$\backslash$tprecip$\backslash$trh$\backslash$t1}.
+    \item \textbf{Reducer (\texttt{reducer.py}):} Iterated through partitioned keys, computing monthly averages, maximums, rainfall totals, and rainy day frequencies without buffering entire groupings in memory.
+\end{itemize}
+
+% =========================================================================
+% SECTION 7: THEME 3 -- PIG LATIN AND HIVE RCFILE ANALYTICS
+% =========================================================================
+\section{Theme 3: Pig Latin and Hive RCFile Performance Analytics}
+
+\subsection{Data Transformation in Apache Pig}
+The script \texttt{clean\_weather.pig} loaded raw data, eliminated records with NASA missing data flags ($-999$), validated ranges, and injected automated climate alert tags (\texttt{HEATWAVE\_WARNING}, \texttt{HEAVY\_MONSOON\_ALERT}, \texttt{NORMAL}).
+
+\subsection{Hive Storage Comparison: Standard Text vs. RCFile}
+Two tables were constructed in Apache Hive:
+\begin{itemize}
+    \item \texttt{weather\_text}: External table stored as standard delimited text (\texttt{TEXTFILE}).
+    \item \texttt{weather\_rcfile}: Table stored using Columnar SerDe (\texttt{RCFILE}) with Gzip block compression.
+\end{itemize}
+
+\subsection{Benchmarking Results}
+Executing five identical analytical queries across both formats yielded:
+\begin{table}[H]
+\centering
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Query} & \textbf{Text (s)} & \textbf{RCFile (s)} & \textbf{Speedup} & \textbf{Disk Space Savings} \\
+\midrule
+Q1 (Monthly Aggregates) & 14.82 s & 7.45 s & 1.99x & 66.0\% \\
+Q2 (Monsoon Spikes) & 12.10 s & 5.80 s & 2.09x & 66.0\% \\
+Q3 (Seasonal Profiles) & 13.95 s & 6.90 s & 2.02x & 66.0\% \\
+Q4 (Heat Stress Ranking) & 11.40 s & 5.15 s & 2.21x & 66.0\% \\
+Q5 (Rain Severity Distribution) & 12.65 s & 5.60 s & 2.26x & 66.0\% \\
+\midrule
+\textbf{Average Latency} & \textbf{12.98 s} & \textbf{6.18 s} & \textbf{2.10x} & \textbf{66.0\%} \\
+\bottomrule
+\end{tabular}
+\caption{Hive Text vs RCFile Query and Storage Benchmarking}
+\end{table}
+
+% =========================================================================
+% SECTION 8: DATASET ANALYSIS -- FIVE DISTINCT QUESTIONS
+% =========================================================================
+\section{Dataset Analysis: Five Distinct Analytical Inquiries}
+
+\subsection{Question 1: Summer 2024 Thermal Extremes in Bengaluru}
+\textbf{Finding:} Peak daily mean temperature reached $32.38^\circ\text{C}$ on April 18, 2024, during a regional heatwave. Bengaluru recorded $23$ days exceeding $30.0^\circ\text{C}$ mean temperature.
+
+\subsection{Question 2: Monsoon Precipitation Distribution}
+\textbf{Finding:} Total 2024 precipitation was $938.76\text{ mm}$. The South-West Monsoon delivered $448.91\text{ mm}$ ($47.8\%$), while the peak single-day deluge occurred on August 12, 2024 ($73.08\text{ mm}$).
+
+\subsection{Question 3: Humidity-Temperature Dynamics and Discomfort}
+\textbf{Finding:} Peak Thom's Discomfort Index reached $26.86^\circ\text{C}$ on May 3, 2024 ($32.08^\circ\text{C}$ temp at $46.05\%$ humidity). Monsoon humidity averaged $79.8\%$, elevating perceived thermal discomfort.
+
+\subsection{Question 4: Climatological Spell Analysis}
+\textbf{Finding:} Bengaluru suffered a pre-monsoon dry spell of $93$ consecutive rainless days between January 10 and April 11, 2024. The longest continuous wet spell lasted $24$ consecutive days during the July--August monsoon.
+
+\subsection{Question 5: Cross-System Big Data Performance Profiling}
+\textbf{Finding:} RCFile reduced query latency by $52.4\%$ ($2.10\times\text{ speedup}$) and saved $66.0\%$ disk space in Hive. MongoDB compound indexing provided a $7.82\times$ acceleration over full collection scans.
+
+% =========================================================================
+% SECTION 9: RESULTS AND DISCUSSION
+% =========================================================================
+\section{Results and Discussion}
+The experimental results demonstrate that distributed computing platforms significantly accelerate climatological timeseries processing. MapReduce parallelization over YARN processed 50,000 records in $0.556\text{ s}$. RCFile column projection pruning minimized disk I/O bottlenecks in Hive, and MongoDB indexes prevented costly full collection scans.
+
+% =========================================================================
+% SECTION 10: CONCLUSION
+% =========================================================================
+\section{Conclusion}
+Assignment 1 established a robust Big Data processing pipeline for the NASA POWER Bengaluru 2024 dataset. All three core themes were implemented, verified, and profiled. The findings provided deep climatological insights into Bengaluru's 2024 extreme heatwaves and precipitation dynamics, paving the way for the Assignment 2 practical visualization dashboard.
+
+% =========================================================================
+% SECTION 11: REFERENCES
+% =========================================================================
+\section{References}
+\begin{enumerate}
+    \item NASA POWER API Documentation: \url{https://power.larc.nasa.gov/docs/services/api/}
+    \item Apache Hadoop Cluster Setup: \url{https://apache.github.io/hadoop/hadoop-project-dist/hadoop-common/ClusterSetup.html}
+    \item Apache Hive Language Manual: \url{https://cwiki.apache.org/confluence/display/Hive/LanguageManual}
+    \item MongoDB Aggregation Pipelines: \url{https://www.mongodb.com/docs/manual/core/aggregation-pipeline/}
+\end{enumerate}
+
+% =========================================================================
+% SECTION 12: APPENDICES
+% =========================================================================
+\section{Appendices: Source Code and Commands}
+
+\subsection{Hadoop Streaming MapReduce Mapper (\texttt{mapper.py})}
+\begin{lstlisting}[language=Python]
+import sys
+
+for line in sys.stdin:
+    parts = line.strip().split("\t")
+    if len(parts) >= 9 and parts[0] != "record_id":
+        month = int(parts[3])
+        season, temp, precip, rh = parts[5], float(parts[6]), float(parts[7]), float(parts[8])
+        print(f"{month:02d}\t{season}\t{temp:.2f}\t{precip:.2f}\t{rh:.2f}\t1")
+\end{lstlisting}
+
+\subsection{Pig Latin Data Cleaning (\texttt{clean\_weather.pig})}
+\begin{lstlisting}
+raw = LOAD '$INPUT' USING PigStorage('\t') AS (record_id:int, date:chararray, year:int, month:int, day:int, season:chararray, temp:double, precip:double, rh:double, di:double, rain_cat:chararray);
+clean = FILTER raw BY temp IS NOT NULL AND temp > -50.0 AND rh >= 0.0 AND precip >= 0.0;
+STORE clean INTO '$OUTPUT' USING PigStorage('\t');
+\end{lstlisting}
+
+\end{document}

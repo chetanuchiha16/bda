@@ -1,0 +1,119 @@
+BCS714D - Big Data Analytics Assignment
+Guidelines & Instructions
+1. Track Overview & Evaluation Scheme
+• Every group must choose one track (Track A or Track B) for their
+assignment submission.
+• All assignments require applying (the 3 core themes listed) distributed
+computing, data management, and query benchmarking to your group's
+assigned dataset.
+
+Track
+Track A:
+Paper
+Presentation
+(Publication)
+
+Track B:
+
+Component
+3 Themes +
+Benchmarking +
+Paper
+
+Weightage
+
+25 Marks
+
+Final Deliverable
+Requirements
+1. Research Paper (IEEE
+Format) based solely on
+paper submission*.
+2. Presentation & Demo.
+
+Part 1: 3 Core
+Themes
+
+15 Marks
+
+Part 2: 10-Mark
+Practical Extension
+
+10 Marks
+
+Practical
+Engineering
+
+1. Detailed Assignment
+Report covering all
+completed components (for
+both parts separately).
+2. Presentation & Demo.
+
+2. Core Themes (Mandatory for All Groups)
+Every group must complete all 3 assignment themes on their assigned
+dataset.
+
+For Sections 7A and 7B
+Academic Year – 2026 – 2027
+Faculty – Sandhiya B
+
+Assignment Theme 1 — MongoDB Big Data Processing & Analytics
+• Document Data Ingestion: Store, index, and organize large-scale
+structured/unstructured dataset into MongoDB collections.
+• Aggregation Pipelines: Implement queries using $match, $group, $project,
+$unwind, and $facet to perform analytical processing.
+• Query Performance Profiling: Evaluate index performance and execution
+speed using .explain("executionStats").
+
+Assignment Theme 2 — Hadoop File Management & MapReduce
+Analytics
+• HDFS Operations: Install Hadoop and perform distributed file
+management tasks:
+• Creating directories and adding files (hdfs dfs -mkdir, hdfs dfs -put).
+• Retrieving files (hdfs dfs -get, hdfs dfs -cat).
+• Deleting files and directories (hdfs dfs -rm -r).
+• MapReduce Execution: Program, compile, and execute MapReduce jobs
+(Java or Python Streaming) on YARN to analyze the stored dataset.
+
+Assignment Theme 3 — Pig Latin & Hive RCFile Performance
+Analytics
+• Data Transformation in Pig: Write a Pig Latin script to load, clean, and
+filter the raw structured dataset.
+• Hive Export & RCFile Format: Ingest the filtered data into Apache Hive
+and store it using the RCFile (Record Columnar File) format alongside a
+Standard Text format table.
+• Performance Analysis: Execute identical analytical Hive queries (HQL)
+against both formats to analyze and report performance differences in query
+execution time and disk compression.
+For Sections 7A and 7B
+Academic Year – 2026 – 2027
+Faculty – Sandhiya B
+
+Track A - 25 Marks
+• Track A focuses on treating your implementation across all 3 themes as a
+research experiment. Instead of submitting a standard assignment report,
+your final grade is evaluated through a formal conference research paper
+and presentation*.
+
+Track B - Part 1 – 15 Marks
+• Same as Track A but you will be submitting a report instead of paper.
+
+Track B – Part 2 – 10 Marks
+• Groups taking Track B must complete one practical extension (or a custom
+extension approved for their dataset statement):
+• Sample Option 1 (Cross-System Hybrid Integration): Connect MongoDB
+directly to Hadoop/Hive using native connectors to perform cross-platform
+batch querying and real-time processing.
+• Sample Option 2 (Performance Profiling & System Stress Testing):
+Benchmark execution times and resource consumption (CPU, I/O,
+Memory) across MapReduce, Pig, and Hive under varying cluster
+parameters (e.g., HDFS split sizes, block sizes, mapper/reducer counts).
+• Sample Option 3 (Web Dashboard & Visualization (Flask / UI) –
+Building a front end or a data visualisation dashboard or using python flask.
+
+For Sections 7A and 7B
+Academic Year – 2026 – 2027
+Faculty – Sandhiya B
+
+

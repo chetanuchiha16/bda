@@ -1,0 +1,33 @@
+{
+  "dataset": "NASA POWER Daily Weather - Bengaluru 2024",
+  "query_filter": {
+    "temperature_c": {
+      "$gte": 28.0
+    },
+    "precipitation_mm": {
+      "$gt": 5.0
+    }
+  },
+  "profiles": [
+    {
+      "mode": "collection_scan",
+      "stage": "COLLSCAN",
+      "executionTimeMillis": 4.85,
+      "totalDocsExamined": 366,
+      "totalKeysExamined": 0,
+      "nReturned": 2,
+      "speedup_factor": 7.82,
+      "summary": "Full collection scan; every document was examined sequentially without index keys."
+    },
+    {
+      "mode": "indexed",
+      "stage": "IXSCAN",
+      "executionTimeMillis": 0.62,
+      "totalDocsExamined": 2,
+      "totalKeysExamined": 53,
+      "nReturned": 2,
+      "speedup_factor": 1.0,
+      "summary": "B-Tree index traversal on idx_temp; examined only relevant leaf keys and fetched matching documents."
+    }
+  ]
+}

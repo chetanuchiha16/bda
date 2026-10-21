@@ -1,0 +1,75 @@
+{
+  "dataset": "NASA POWER Daily Weather - Bengaluru 2024",
+  "team": "Group 17 (Chetan Kishor C G & Hongiran D)",
+  "storage_comparison": {
+    "base_dataset_366_days": {
+      "text_format_bytes": 23865,
+      "text_format_kb": 23.31,
+      "rcfile_format_bytes": 9068,
+      "rcfile_format_kb": 8.86,
+      "compression_ratio": "2.63:1",
+      "storage_savings_pct": 62.0
+    },
+    "scaled_cluster_dataset_50k": {
+      "text_format_bytes": 4151248,
+      "text_format_mb": 3.96,
+      "rcfile_format_bytes": 1411424,
+      "rcfile_format_mb": 1.35,
+      "compression_ratio": "2.94:1",
+      "storage_savings_pct": 66.0
+    }
+  },
+  "query_benchmarks": [
+    {
+      "query_id": "Q1",
+      "name": "Monthly Temperature & Rainfall Aggregation (GROUP BY)",
+      "columns_scanned": 5,
+      "total_columns": 12,
+      "text_execution_sec": 14.82,
+      "rcfile_execution_sec": 7.45,
+      "speedup_factor": 1.99
+    },
+    {
+      "query_id": "Q2",
+      "name": "Heavy Monsoon Days (WHERE precipitation >= 25)",
+      "columns_scanned": 4,
+      "total_columns": 12,
+      "text_execution_sec": 12.1,
+      "rcfile_execution_sec": 5.8,
+      "speedup_factor": 2.09
+    },
+    {
+      "query_id": "Q3",
+      "name": "Seasonal Climate & Rainy Day Aggregation",
+      "columns_scanned": 4,
+      "total_columns": 12,
+      "text_execution_sec": 13.95,
+      "rcfile_execution_sec": 6.9,
+      "speedup_factor": 2.02
+    },
+    {
+      "query_id": "Q4",
+      "name": "Heat Stress Ranking (ORDER BY Heat Index DESC LIMIT 10)",
+      "columns_scanned": 3,
+      "total_columns": 12,
+      "text_execution_sec": 11.4,
+      "rcfile_execution_sec": 5.15,
+      "speedup_factor": 2.21
+    },
+    {
+      "query_id": "Q5",
+      "name": "Rain Severity Frequency & Volume Distribution",
+      "columns_scanned": 3,
+      "total_columns": 12,
+      "text_execution_sec": 12.65,
+      "rcfile_execution_sec": 5.6,
+      "speedup_factor": 2.26
+    }
+  ],
+  "overall_insights": {
+    "average_text_latency_sec": 12.98,
+    "average_rcfile_latency_sec": 6.18,
+    "average_speedup": 2.1,
+    "why_rcfile_faster": "RCFile uses horizontal column partitioning, allowing Hive to skip non-projected columns entirely (Column Projection Pruning) and reading compressed Gzip blocks with substantially lower Disk I/O."
+  }
+}

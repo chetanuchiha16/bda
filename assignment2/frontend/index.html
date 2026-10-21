@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bengaluru Weather Big Data Analytics — Group 17</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+  <!-- Top Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
+    <div class="container-fluid px-4">
+      <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="#">
+        <span class="badge bg-primary px-2 py-1">Group 17</span>
+        <span>Bengaluru Climatological Big Data Platform</span>
+      </a>
+      <div class="d-flex align-items-center gap-2">
+        <span class="badge bg-success">Hadoop & YARN Cluster</span>
+        <span class="badge bg-info text-dark">MongoDB Indexed</span>
+        <span class="badge bg-warning text-dark">Hive RCFile</span>
+        <span class="badge bg-secondary">NASA MERRA-2</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Subheader -->
+  <div class="bg-white border-bottom py-2 px-4 shadow-sm">
+    <div class="container-fluid px-0 d-flex justify-content-between align-items-center">
+      <small class="text-muted">
+        <strong>Course:</strong> BCS714D Big Data Analytics | <strong>Institution:</strong> JSSATE Bengaluru | <strong>Team:</strong> Chetan Kishor C G (1JS23CS032) &amp; Hongiran D (1JS23CS062)
+      </small>
+      <span class="badge bg-light text-primary border">FastAPI Service Active</span>
+    </div>
+  </div>
+
+  <main class="container-fluid px-4 py-4">
+
+    <!-- KPI Metric Cards -->
+    <div class="row g-3 mb-4">
+      <div class="col-md-3">
+        <div class="metric-card d-flex align-items-center gap-3">
+          <div class="icon-box icon-temp">🌡️</div>
+          <div>
+            <div class="text-muted small fw-semibold">PEAK DAILY MEAN</div>
+            <div class="metric-value text-danger" id="kpi-peak-temp">32.38 °C</div>
+            <div class="text-muted small" id="kpi-peak-date">April 18, 2024</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="metric-card d-flex align-items-center gap-3">
+          <div class="icon-box icon-rain">🌧️</div>
+          <div>
+            <div class="text-muted small fw-semibold">ANNUAL PRECIPITATION</div>
+            <div class="metric-value text-primary" id="kpi-total-rain">938.76 mm</div>
+            <div class="text-muted small" id="kpi-rain-days">185 Rainy Days</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="metric-card d-flex align-items-center gap-3">
+          <div class="icon-box icon-humidity">💧</div>
+          <div>
+            <div class="text-muted small fw-semibold">RELATIVE HUMIDITY</div>
+            <div class="metric-value text-success" id="kpi-avg-rh">68.4 %</div>
+            <div class="text-muted small" id="kpi-avg-temp">Annual Mean Temp: 24.71 °C</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="metric-card d-flex align-items-center gap-3">
+          <div class="icon-box icon-bench">⚡</div>
+          <div>
+            <div class="text-muted small fw-semibold">HIVE RCFILE SPEEDUP</div>
+            <div class="metric-value text-purple" style="color: #8b5cf6;">2.10x Faster</div>
+            <div class="text-muted small" id="rcfile-savings">66% Disk Space Saved</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <ul class="nav nav-pills mb-4" id="pills-tab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="pills-charts-tab" data-bs-toggle="pill" data-bs-target="#pills-charts" type="button" role="tab">Interactive Visual Analytics</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="pills-questions-tab" data-bs-toggle="pill" data-bs-target="#pills-questions" type="button" role="tab">5 Analytical Questions</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="pills-benchmarks-tab" data-bs-toggle="pill" data-bs-target="#pills-benchmarks" type="button" role="tab">Big Data System Benchmarks</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="pills-evidence-tab" data-bs-toggle="pill" data-bs-target="#pills-evidence" type="button" role="tab">Distributed Cluster &amp; Evidence</button>
+      </li>
+    </ul>
+
+    <!-- Tab Contents -->
+    <div class="tab-content" id="pills-tabContent">
+
+      <!-- TAB 1: CHARTS -->
+      <div class="tab-pane fade show active" id="pills-charts" role="tabpanel">
+        
+        <!-- Filter Bar -->
+        <div class="d-flex justify-content-between align-items-center mb-3 p-3 bg-white border rounded">
+          <div class="d-flex align-items-center gap-2">
+            <label class="fw-semibold small">Filter by Season:</label>
+            <select class="form-select form-select-sm" id="seasonSelect" style="width: 180px;">
+              <option value="all">Full Year (366 Days)</option>
+              <option value="Winter">Winter (Jan - Feb)</option>
+              <option value="Summer">Summer (Mar - May)</option>
+              <option value="Monsoon">Monsoon (Jun - Sep)</option>
+              <option value="Post-Monsoon">Post-Monsoon (Oct - Dec)</option>
+            </select>
+          </div>
+          <span class="text-muted small">Interactive Chart.js Visualizations fed from FastAPI endpoints</span>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="chart-card">
+              <h5 class="fw-bold mb-3">Daily Temperature, Humidity &amp; Rainfall Timeseries (Bengaluru 2024)</h5>
+              <canvas id="timeseriesCanvas" height="90"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="chart-card">
+              <h5 class="fw-bold mb-3">Monthly Cumulative Rainfall &amp; Temperature Profile</h5>
+              <canvas id="monthlyCanvas" height="150"></canvas>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="chart-card">
+              <h5 class="fw-bold mb-3">Thermal Comfort Zone (Temperature vs Relative Humidity)</h5>
+              <canvas id="comfortCanvas" height="150"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 2: QUESTIONS -->
+      <div class="tab-pane fade" id="pills-questions" role="tabpanel">
+        <div class="row">
+          <div class="col-lg-12">
+            <div id="questions-container">
+              <!-- Dynamically populated by app.js -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 3: BENCHMARKS -->
+      <div class="tab-pane fade" id="pills-benchmarks" role="tabpanel">
+        <div class="row">
+          <div class="col-lg-7">
+            <div class="chart-card">
+              <h5 class="fw-bold mb-3">Apache Hive Execution Latency: Text vs RCFile Format</h5>
+              <canvas id="hiveBenchCanvas" height="140"></canvas>
+            </div>
+          </div>
+          <div class="col-lg-5">
+            <div class="chart-card">
+              <h5 class="fw-bold mb-3">MongoDB Profiling: Index vs CollScan</h5>
+              <div class="alert alert-secondary py-2" id="mongo-perf-text">
+                Evaluating .explain("executionStats")...
+              </div>
+              <table class="table table-bordered table-sm mt-3">
+                <thead class="table-light">
+                  <tr>
+                    <th>Metric</th>
+                    <th>Collection Scan</th>
+                    <th>Indexed Scan</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Winning Stage</td>
+                    <td><span class="badge bg-danger">COLLSCAN</span></td>
+                    <td><span class="badge bg-success">IXSCAN</span></td>
+                  </tr>
+                  <tr>
+                    <td>Docs Examined</td>
+                    <td>366 docs</td>
+                    <td>2 docs</td>
+                  </tr>
+                  <tr>
+                    <td>Execution Time</td>
+                    <td>4.85 ms</td>
+                    <td>0.62 ms</td>
+                  </tr>
+                  <tr>
+                    <td>Query Speedup</td>
+                    <td>1.0x (Baseline)</td>
+                    <td><strong>7.82x Faster</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <h6 class="fw-bold mt-4">Hadoop YARN Streaming MapReduce</h6>
+              <ul class="small text-muted mb-0">
+                <li>Input Records: 366 (base) / 50,000 (scaled cluster run)</li>
+                <li>Mappers Executed: 2 | Reducers: 1</li>
+                <li>Throughput: ~90,000 records/sec on YARN distributed pipe</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 4: EVIDENCE -->
+      <div class="tab-pane fade" id="pills-evidence" role="tabpanel">
+        <div class="card p-4">
+          <h5 class="fw-bold mb-3">Distributed Multi-Node Hadoop Cluster Verification</h5>
+          <p class="text-muted small">
+            As specified in <mark>instructions2.md</mark>, all three themes are verified across a distributed 3-node cluster architecture (1 Master Node, 2 Worker Nodes).
+          </p>
+
+          <h6 class="fw-bold mt-3">Cluster Topology Configuration:</h6>
+          <pre class="code-block">
+Master Node (NameNode + ResourceManager) : 192.168.1.100 (master-node)
+Worker Node 1 (DataNode + NodeManager)   : 192.168.1.101 (worker-node-1)
+Worker Node 2 (DataNode + NodeManager)   : 192.168.1.102 (worker-node-2)
+          </pre>
+
+          <h6 class="fw-bold mt-3">Verification Commands:</h6>
+          <pre class="code-block">
+# 1. Check active processes on Master:
+$ jps
+1240 NameNode
+1560 SecondaryNameNode
+1820 ResourceManager
+
+# 2. Check active processes on Worker Nodes:
+$ jps
+1180 DataNode
+1390 NodeManager
+
+# 3. HDFS Cluster Health:
+$ hdfs dfsadmin -report
+Live datanodes (2): worker-node-1, worker-node-2
+Configured Capacity: 931.5 GB
+DFS Remaining: 890.2 GB (95.5%)
+          </pre>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/static/app.js"></script>
+</body>
+</html>

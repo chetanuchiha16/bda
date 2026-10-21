@@ -1,0 +1,501 @@
+Group
+No
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+10
+
+11
+
+USN
+
+Student Name
+
+1JS23CS008
+
+Amulya M
+
+1JS23CS009
+
+Ananya S R
+
+1JS23CS003
+
+Abhishek N Acharya
+
+1JS23CS015
+
+Ashwin Kumar N S
+
+1JS23CS020
+
+Beeresh Koteppa Manegar
+
+1JS23CS058
+
+Halaswamy S B
+
+1JS23CS001
+
+Abhiram Chavakula
+
+1JS23CS002
+
+Abhishek Jaiswal
+
+1JS23CS018
+
+B V Mukesh Reddy
+
+1JS23CS027
+
+Challa Maneesh Sai
+
+1JS23CS195
+
+Chinmay S Patil
+
+1JS23CS019
+
+Basil Shahul
+
+1JS23CS022
+
+Bharath Kumar P
+
+1JS24CS400
+
+Akash S
+
+1JS23CS017
+
+B C Uttam
+
+1JS23CS023
+
+Bhavana K
+
+1JS23CS030
+
+Chandana J Umashankar
+
+1JS23CS038
+
+Chirag M
+
+1JS23CS046
+
+Dhanush A S
+
+1JS23CS054
+
+Ganesh C
+
+1JS23CS014
+
+Ashritaa M S
+
+1JS23CS026
+
+Challa Harshitha
+
+1JS23CS034
+
+Chindanuru Sanjana Sree
+
+1JS23CS021
+
+Bhagyashree Merli
+
+1JS23CS025
+
+Bhumika A S
+
+1JS24CS404
+
+Dakshayini
+
+1JS23CS045
+
+Deepthi K S
+
+1JS23CS028
+
+Chandana D K
+
+1JS23CS053
+
+Ganavi M C
+
+1JS23CS006
+
+Akash B
+
+1JS23CS040
+
+Danish Manzoor
+
+1JS23CS059
+
+Harsh Srivastava
+
+1JS23CS010
+
+Arpitha T R
+
+1JS23CS024
+
+Bhoomika C
+
+1JS23CS029
+
+Chandana Dn
+
+Dataset Assigned
+
+Direct Download URL
+
+Dataset Information Page
+
+NYC Yellow Taxi Trips — March
+2024
+
+https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_ https://www.nyc.gov/site/tlc/about/tlc-trip-record-da
+tripdata_2024-03.parquet
+ta.page
+
+Chicago Crimes — 2001 to Present
+
+https://data.cityofchicago.org/api/v3/views/ijzp-q8t2/ex https://data.cityofchicago.org/Public-Safety/Crimes
+port.csv?accessType=DOWNLOAD
+-2001-to-Present/ijzp-q8t2
+
+Chicago Food Inspections
+
+https://data.cityofchicago.org/api/v3/views/4ijn-s7e5/e
+xport.csv?accessType=DOWNLOAD
+
+https://data.cityofchicago.org/d/4ijn-s7e5
+
+UCI Online Retail
+
+https://archive.ics.uci.edu/static/public/352/online+ret
+https://archive.ics.uci.edu/dataset/352/online+retail
+ail.zip
+
+UCI Bank Marketing
+
+https://archive.ics.uci.edu/static/public/222/bank+mar
+keting.zip
+
+https://archive.ics.uci.edu/dataset/222/bank+mark
+eting
+
+UCI Electricity Load Diagrams
+2011–2014
+
+https://archive.ics.uci.edu/ml/machine-learning-datab
+ases/00321/LD2011_2014.txt.zip
+
+https://archive.ics.uci.edu/dataset/321/electricitylo
+addiagrams20112014
+
+UCI Air Quality
+
+https://archive.ics.uci.edu/static/public/360/air+quality.
+zip
+
+https://archive.ics.uci.edu/dataset/360/air+quality
+
+UCI Household Power Consumption
+
+Instacart Market Basket Analysis
+
+H&M Fashion Recommendations
+
+Dunnhumby Complete Journey
+
+https://archive.ics.uci.edu/static/public/235/individual+ https://archive.ics.uci.edu/dataset/235/individual+h
+household+electric+power+consumption.zip
+ousehold+electric+power+consumption
+
+https://zenodo.org/records/2654444
+
+https://zenodo.org/records/2654444
+
+https://www.kaggle.com/competitions/h-and-m-person https://www.kaggle.com/competitions/h-and-m-per
+alized-fashion-recommendations/data
+sonalized-fashion-recommendations
+
+https://www.dunnhumby.com/source-files/
+
+https://www.dunnhumby.com/source-files/
+
+12
+
+13
+
+14
+
+15
+
+16
+
+1JS23CS031
+
+Charitha G
+
+1JS23CS049
+
+Dhanvanth S Gurukar
+
+1JS23CS051
+
+Dhruvi V
+
+1JS23CS060
+
+Harshika Sumagna Reddy Y
+
+1JS23CS061
+
+Harshitha S
+
+1JS24CS408
+
+Harshitha T
+
+1JS23CS043
+
+Deepanjali Kumari
+
+1JS23CS011
+
+Arti Sehrawat
+
+1JS23CS012
+
+Arya
+
+1JS23CS042
+
+Deepali Darshi
+
+1JS23CS037
+
+Chirag B P
+
+1JS23CS041
+
+Deeganth T Y
+
+1JS23CS063
+
+Hruthick M
+
+1JS23CS044
+
+Deeptanshu Pandey
+
+1JS23CS052
+
+Gagan Surendra Shamnur
+
+1JS23CS039
+
+Chirag S
+
+1JS23CS032
+
+Chetan Kishor C G
+
+17
+
+18
+
+19
+
+20
+
+21
+
+22
+
+23
+
+1JS23CS062
+
+Hongiran D
+
+1JS23CS004
+
+Abhishek R
+
+1JS23CS005
+
+Adithya V
+
+1JS23CS048
+
+Dhanush Singh G
+
+1JS23CS064
+
+Impana P
+
+1JS23CS035
+
+Chinmayi M
+
+1JS24CS407
+
+Harshitha M
+
+1JS23CS055
+
+Gnanashree B U
+
+1JS23CS056
+
+Gowda Adya Thimmaiah
+
+1JS24CS402
+
+Ananya M N
+
+1JS23CS033
+
+Chethan Krishna
+
+1JS23CS036
+
+Chiraag V
+
+1JS23CS047
+
+Dhanush C K
+
+1JS23CS050
+
+Dhanya R V
+
+1JS23CS057
+
+H Shravani
+
+1JS24CS405
+
+Disha M
+
+1JS23CS007
+
+Amogh Vijayvittal Nadagouda
+
+1JS23CS013
+
+Arya Swaroop K G
+
+1JS23CS016
+
+Avaneesh G B
+
+Our World in Data COVID-19
+
+https://covid.ourworldindata.org/data/owid-covid-data.
+csv
+
+https://github.com/owid/covid-19-data
+
+US Consumer Financial Complaints
+
+https://www.consumerfinance.gov/data-research/cons https://www.consumerfinance.gov/data-research/c
+umer-complaints/search/api/v1/
+onsumer-complaints/
+
+SEC Company Financial Facts
+
+https://www.sec.gov/Archives/edgar/daily-index/xbrl/c
+https://www.sec.gov/edgar/sec-api-documentation
+ompanyfacts.zip
+
+Chicago 311 Service Requests
+
+https://data.cityofchicago.org/d/v6vf-nfxy
+
+https://data.cityofchicago.org/d/v6vf-nfxy
+
+NOAA Global Historical Climatology
+Network Daily
+
+https://www.ncei.noaa.gov/data/global-historical-clima https://www.ncei.noaa.gov/products/land-based-st
+tology-network-daily/
+ation/global-historical-climatology-network-daily
+
+NASA POWER Daily Weather —
+Bengaluru, 2024
+
+https://power.larc.nasa.gov/api/temporal/daily/point?p
+arameters=T2M%2CPRECTOTCORR%2CRH2M&co
+mmunity=AG&longitude=77.5946&latitude=12.9716&
+start=20240101&end=20241231&format=CSV
+
+https://power.larc.nasa.gov/docs/services/api/
+
+USDA FoodData Central — October https://fdc.nal.usda.gov/fdc-datasets/FoodData_Centr
+2024 package
+al_csv_2024-10-31.zip
+
+https://fdc.nal.usda.gov/download-datasets/
+
+EPA Daily Ozone Measurements —
+2024
+
+https://aqs.epa.gov/aqsweb/airdata/daily_44201_202 https://www.epa.gov/outdoor-air-quality-data/downl
+4.zip
+oad-daily-data
+
+US Flight On-Time Performance
+
+https://www.transtats.bts.gov/Fields.asp?gnoyr_VQ=F
+GJ
+
+https://www.transtats.bts.gov/
+
+Wikimedia Pageviews — October
+2024
+
+https://dumps.wikimedia.org/other/pageviews/2024/20
+24-10/
+
+https://dumps.wikimedia.org/other/pageviews/
+
+Project Gutenberg RDF Catalogue
+
+https://www.gutenberg.org/cache/epub/feeds/rdf-files.
+tar.bz2
+
+https://www.gutenberg.org/
+
+Los Angeles Crime Data —
+2020–2024
+
+https://data.lacity.org/Public-Safety/Crime-Data-from- https://data.lacity.org/Public-Safety/Crime-Data-fro
+2020-to-2024/2nrs-mtv8
+m-2020-to-2024/2nrs-mtv8
+
+

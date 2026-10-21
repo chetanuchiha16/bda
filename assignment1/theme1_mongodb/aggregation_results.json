@@ -1,0 +1,253 @@
+{
+  "monthly_analytics": [
+    {
+      "month": 1,
+      "month_name": "January",
+      "avg_temp": 23.0,
+      "max_temp": 24.69,
+      "min_temp": 21.31,
+      "total_rainfall_mm": 3.36,
+      "avg_humidity": 62.44,
+      "days_count": 31
+    },
+    {
+      "month": 2,
+      "month_name": "February",
+      "avg_temp": 25.38,
+      "max_temp": 27.94,
+      "min_temp": 23.64,
+      "total_rainfall_mm": 0.0,
+      "avg_humidity": 49.06,
+      "days_count": 29
+    },
+    {
+      "month": 3,
+      "month_name": "March",
+      "avg_temp": 27.99,
+      "max_temp": 29.74,
+      "min_temp": 25.11,
+      "total_rainfall_mm": 0.0,
+      "avg_humidity": 37.77,
+      "days_count": 31
+    },
+    {
+      "month": 4,
+      "month_name": "April",
+      "avg_temp": 30.31,
+      "max_temp": 32.38,
+      "min_temp": 28.77,
+      "total_rainfall_mm": 0.1,
+      "avg_humidity": 38.14,
+      "days_count": 30
+    },
+    {
+      "month": 5,
+      "month_name": "May",
+      "avg_temp": 27.71,
+      "max_temp": 32.19,
+      "min_temp": 23.97,
+      "total_rainfall_mm": 116.14,
+      "avg_humidity": 64.57,
+      "days_count": 31
+    },
+    {
+      "month": 6,
+      "month_name": "June",
+      "avg_temp": 24.09,
+      "max_temp": 26.79,
+      "min_temp": 21.71,
+      "total_rainfall_mm": 148.02,
+      "avg_humidity": 75.77,
+      "days_count": 30
+    },
+    {
+      "month": 7,
+      "month_name": "July",
+      "avg_temp": 23.7,
+      "max_temp": 25.0,
+      "min_temp": 22.67,
+      "total_rainfall_mm": 61.55,
+      "avg_humidity": 77.57,
+      "days_count": 31
+    },
+    {
+      "month": 8,
+      "month_name": "August",
+      "avg_temp": 23.9,
+      "max_temp": 25.21,
+      "min_temp": 22.57,
+      "total_rainfall_mm": 189.82,
+      "avg_humidity": 81.65,
+      "days_count": 31
+    },
+    {
+      "month": 9,
+      "month_name": "September",
+      "avg_temp": 23.92,
+      "max_temp": 24.91,
+      "min_temp": 22.85,
+      "total_rainfall_mm": 49.52,
+      "avg_humidity": 77.91,
+      "days_count": 30
+    },
+    {
+      "month": 10,
+      "month_name": "October",
+      "avg_temp": 23.2,
+      "max_temp": 25.74,
+      "min_temp": 21.57,
+      "total_rainfall_mm": 227.41,
+      "avg_humidity": 84.71,
+      "days_count": 31
+    },
+    {
+      "month": 11,
+      "month_name": "November",
+      "avg_temp": 21.88,
+      "max_temp": 23.33,
+      "min_temp": 20.5,
+      "total_rainfall_mm": 41.53,
+      "avg_humidity": 82.9,
+      "days_count": 30
+    },
+    {
+      "month": 12,
+      "month_name": "December",
+      "avg_temp": 21.58,
+      "max_temp": 23.63,
+      "min_temp": 17.56,
+      "total_rainfall_mm": 101.31,
+      "avg_humidity": 83.2,
+      "days_count": 31
+    }
+  ],
+  "seasonal_distribution": [
+    {
+      "season": "Monsoon",
+      "metric_type": "humidity",
+      "avg_value": 78.25,
+      "max_value": 89.22,
+      "min_value": 67.88
+    },
+    {
+      "season": "Monsoon",
+      "metric_type": "temp",
+      "avg_value": 23.9,
+      "max_value": 26.79,
+      "min_value": 21.71
+    },
+    {
+      "season": "Post-Monsoon",
+      "metric_type": "humidity",
+      "avg_value": 83.61,
+      "max_value": 95.42,
+      "min_value": 71.0
+    },
+    {
+      "season": "Post-Monsoon",
+      "metric_type": "temp",
+      "avg_value": 22.22,
+      "max_value": 25.74,
+      "min_value": 17.56
+    },
+    {
+      "season": "Summer",
+      "metric_type": "humidity",
+      "avg_value": 46.92,
+      "max_value": 78.53,
+      "min_value": 24.91
+    },
+    {
+      "season": "Summer",
+      "metric_type": "temp",
+      "avg_value": 28.65,
+      "max_value": 32.38,
+      "min_value": 23.97
+    },
+    {
+      "season": "Winter",
+      "metric_type": "humidity",
+      "avg_value": 55.97,
+      "max_value": 76.51,
+      "min_value": 37.48
+    },
+    {
+      "season": "Winter",
+      "metric_type": "temp",
+      "avg_value": 24.15,
+      "max_value": 27.94,
+      "min_value": 21.31
+    }
+  ],
+  "faceted_summary": {
+    "hottest_days": [
+      {
+        "date": "2024-04-18",
+        "temperature_c": 32.38,
+        "heat_index_c": 26.05,
+        "season": "Summer"
+      },
+      {
+        "date": "2024-04-20",
+        "temperature_c": 32.29,
+        "heat_index_c": 25.96,
+        "season": "Summer"
+      },
+      {
+        "date": "2024-04-19",
+        "temperature_c": 32.25,
+        "heat_index_c": 26.24,
+        "season": "Summer"
+      },
+      {
+        "date": "2024-05-01",
+        "temperature_c": 32.19,
+        "heat_index_c": 26.38,
+        "season": "Summer"
+      },
+      {
+        "date": "2024-05-03",
+        "temperature_c": 32.08,
+        "heat_index_c": 26.86,
+        "season": "Summer"
+      }
+    ],
+    "wettest_days": [
+      {
+        "date": "2024-08-12",
+        "precipitation_mm": 73.08,
+        "rain_category": "Heavy Rain"
+      },
+      {
+        "date": "2024-12-02",
+        "precipitation_mm": 42.03,
+        "rain_category": "Heavy Rain"
+      },
+      {
+        "date": "2024-06-02",
+        "precipitation_mm": 40.31,
+        "rain_category": "Heavy Rain"
+      },
+      {
+        "date": "2024-10-16",
+        "precipitation_mm": 22.76,
+        "rain_category": "Moderate Rain"
+      },
+      {
+        "date": "2024-10-15",
+        "precipitation_mm": 20.31,
+        "rain_category": "Moderate Rain"
+      }
+    ],
+    "annual_summary": [
+      {
+        "overall_avg_temp": 24.71,
+        "overall_max_temp": 32.38,
+        "overall_min_temp": 17.56,
+        "annual_rainfall_mm": 938.76,
+        "rainy_days_count": 185,
+        "heatwave_days_count": 0
+      }
+    ]
+  }
+}

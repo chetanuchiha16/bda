@@ -1,0 +1,94 @@
+VISVESVARAYA TECHNOLOGICAL UNIVERSITY
+Jnana Sangama, Santhibastawad Road, Machhe, Belagavi-590018, Karnataka, India
+
+Big Data
+
+Analytics
+
+2022 SCHEME - BCS714D
+ASSIGNMENT 1 REPORT
+ON
+
+“________(you need to fill your assignment topic here)_______”
+Submitted as part of the coursework for Big Data Analytics
+
+BACHELOR OF ENGINEERING
+in
+
+COMPUTER SCIENCE AND ENGINEERING
+For the Academic Year 2026 - 2027
+
+Team NO: _________________
+Name
+
+Signature of the Faculty:
+
+USN
+
+Signature
+
+Signature of HOD:
+
+Department of Computer Science and Engineering,
+JSS Academy of Technical Education,
+JSS Campus Rd, Dr. Vishnuvardhan Road, Bengaluru - 560060
+
+JSS Academy of Technical Education
+Department of Computer Science and Engineering
+
+TABLE OF CONTENTS – ASSIGNMENT 1
+S. No.
+
+Section Title
+
+1
+
+Introduction and Objectives
+
+2
+
+Hardware and Software Requirements
+
+3
+
+Hadoop Cluster Setup, Configuration, and
+Verification
+
+4
+
+Dataset Description and Preparation
+
+5
+6
+7
+8
+
+Theme 1: MongoDB Big Data Processing and
+Analytics
+Theme 2: Hadoop File Management and
+MapReduce Analytics
+Theme 3: Pig Latin and Hive RCFile Performance
+Analytics
+Dataset Analysis: At Least Five Distinct Analytical
+Questions, Queries, and Results
+
+9
+
+Results and Discussion
+
+10
+
+Conclusion
+
+11
+
+References
+
+12
+
+Appendices: Configuration Files, Source Code,
+Commands, and Screenshots
+
+Page No.
+
+

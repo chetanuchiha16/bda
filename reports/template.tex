@@ -1,0 +1,132 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in, includeheadfoot}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric,arrows.meta,positioning,fit,backgrounds,calc}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    hypertexnames=false
+}
+
+\lstset{
+    basicstyle=\ttfamily\footnotesize,
+    breaklines=true,
+    frame=single,
+    backgroundcolor=\color{gray!8},
+    keywordstyle=\color{blue}\bfseries,
+    commentstyle=\color{green!60!black},
+    stringstyle=\color{red!70!black},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    stepnumber=1,
+    numbersep=8pt,
+    tabsize=2,
+    showstringspaces=false
+}
+
+% Header and Footer Configuration
+\pagestyle{fancy}
+\fancyhf{}
+\setlength{\headheight}{15pt}
+\fancyhead[L]{\small Big Data Analytics}
+\fancyhead[R]{\small CNS [BCS703] -- Assignment 1}
+\fancyfoot[L]{\small Department of Computer Science and Engineering}
+\fancyfoot[R]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\begin{document}
+
+% =========================================================================
+% TITLE PAGE
+% =========================================================================
+\begin{titlepage}
+    \centering
+
+    % Header rule
+    {\small Cryptography and Network Security [BCS703]}\\[2pt]
+    \noindent\rule{\textwidth}{1.2pt}
+
+    \vspace{0.3cm}
+
+    % University name
+    {\large\bfseries VISVESVARAYA TECHNOLOGICAL UNIVERSITY, BELAGAVI}
+
+    \vspace{0.25cm}
+
+    % VTU Logo
+    \includegraphics[width=2.4cm]{logos/vtu_logo.png}
+
+    \vspace{0.25cm}
+
+    % Report title
+    {\normalsize ASSIGNMENT 1 REPORT ON}\\[6pt]
+    {\Large\bfseries Implementation of Cryptographic and Network Security Algorithms}\\[6pt]
+    {\normalsize\textit{Part 1: Caesar Cipher (Classical Substitution) $\vert$ Part 2: Diffie--Hellman Key Exchange}}\\[8pt]
+    {\normalsize Submitted by:}
+
+    \vspace{0.25cm}
+
+    % Student details table
+    \begin{tabular}{|c|c|c|c|c|c|}
+        \hline
+        \begin{tabular}[c]{@{}c@{}}Sl.\\No\end{tabular} &
+        Student name &
+        USN &
+        \begin{tabular}[c]{@{}c@{}}Student\\signature\end{tabular} &
+        \begin{tabular}[c]{@{}c@{}}Marks\\Awarded\end{tabular} &
+        \begin{tabular}[c]{@{}c@{}}Signature\\of faculty\end{tabular} \\
+        \hline
+        1 & Chetan Kishor C G & 1JS23CS032 & & & \\[6pt]
+        \hline
+        2 & Hongiran D & 1JS23CS062 & & & \\[6pt]
+        \hline
+    \end{tabular}
+
+    \vspace{0.35cm}
+
+    % Guide details
+    {\normalsize Guided by}\\[4pt]
+    {\normalsize\bfseries Dr. Pooja H}\\[2pt]
+    {\normalsize Associate Professor}\\[2pt]
+    {\normalsize Department of Computer Science and Engineering}
+
+    \vspace{0.25cm}
+
+    % JSSATE Logo
+    \includegraphics[width=2.4cm]{logos/jss_logo.png}
+
+    \vspace{0.2cm}
+
+    % College details
+    {\normalsize JSS Academy of Technical Education, Bengaluru -- 560060}\\[3pt]
+    {\normalsize\bfseries Department of Computer Science and Engineering}\\[2pt]
+    {\small Academic Year: 2026--27 (ODD Semester)}
+
+    \vfill
+
+    % Footer rule
+    \noindent\rule{\textwidth}{1.5pt}
+
+\end{titlepage}
+
+\newpage
+
+\end{document}

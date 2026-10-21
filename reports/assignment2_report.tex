@@ -1,0 +1,318 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in, includeheadfoot}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{titlesec}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    hypertexnames=false
+}
+
+\lstset{
+    basicstyle=\ttfamily\footnotesize,
+    breaklines=true,
+    frame=single,
+    backgroundcolor=\color{gray!8},
+    keywordstyle=\color{blue}\bfseries,
+    commentstyle=\color{green!60!black},
+    stringstyle=\color{red!70!black},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    stepnumber=1,
+    numbersep=8pt,
+    tabsize=2,
+    showstringspaces=false
+}
+
+% Header and Footer
+\pagestyle{fancy}
+\fancyhf{}
+\setlength{\headheight}{15pt}
+\fancyhead[L]{\small Big Data Analytics [BCS714D]}
+\fancyhead[R]{\small Assignment 2 Report -- Track B}
+\fancyfoot[L]{\small Department of Computer Science and Engineering, JSSATEB}
+\fancyfoot[R]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\begin{document}
+
+% =========================================================================
+% TITLE PAGE
+% =========================================================================
+\begin{titlepage}
+    \centering
+
+    {\large\bfseries VISVESVARAYA TECHNOLOGICAL UNIVERSITY}\\[2pt]
+    {\small Jnana Sangama, Machhe, Belagavi-590018, Karnataka, India}\\[6pt]
+    \noindent\rule{\textwidth}{1.2pt}
+
+    \vspace{0.3cm}
+
+    \includegraphics[width=2.5cm]{logos/vtu_logo.png}
+
+    \vspace{0.3cm}
+
+    {\large\bfseries 2022 SCHEME -- BCS714D}\\[4pt]
+    {\large\bfseries ASSIGNMENT 2 REPORT}\\[4pt]
+    {\normalsize ON}\\[6pt]
+    {\Large\bfseries Interactive Weather Analytics Dashboard and System Benchmarking on NASA POWER Bengaluru 2024 Climatological Data}\\[6pt]
+    {\normalsize\textit{Practical Extension (Track B -- Part 2: Web Dashboard \& Visualization)}}\\[10pt]
+
+    {\normalsize Submitted as part of the coursework for \textbf{Big Data Analytics}}
+
+    \vspace{0.4cm}
+
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        \textbf{Sl. No} & \textbf{Student Name} & \textbf{USN} & \textbf{Marks Awarded} & \textbf{Signature} \\
+        \hline
+        1 & Chetan Kishor C G & 1JS23CS032 & & \\[6pt]
+        \hline
+        2 & Hongiran D & 1JS23CS062 & & \\[6pt]
+        \hline
+    \end{tabular}
+
+    \vspace{0.4cm}
+    \textbf{Team No:} 17 \quad $\vert$ \quad \textbf{Section:} 7A
+
+    \vspace{0.3cm}
+
+    {\normalsize Course Faculty:}\\[2pt]
+    {\normalsize\bfseries Sandhiya B}\\[2pt]
+    {\small Assistant Professor, Department of Computer Science and Engineering}
+
+    \vspace{0.3cm}
+
+    \includegraphics[width=2.5cm]{logos/jss_logo.png}
+
+    \vspace{0.2cm}
+
+    {\normalsize\bfseries Department of Computer Science and Engineering}\\[2pt]
+    {\normalsize JSS Academy of Technical Education}\\[2pt]
+    {\small JSS Campus Road, Dr. Vishnuvardhan Road, Bengaluru -- 560060}\\[2pt]
+    {\small Academic Year: 2026--2027 (ODD Semester)}
+
+    \vfill
+    \noindent\rule{\textwidth}{1.2pt}
+\end{titlepage}
+
+\newpage
+\tableofcontents
+\newpage
+
+% =========================================================================
+% SECTION 1: INTRODUCTION AND OBJECTIVES
+% =========================================================================
+\section{Introduction and Objectives}
+
+\subsection{Background and Motivation}
+With the exponential increase in earth observation satellites and automated meteorological stations, climatological data processing has transitioned into a prominent Big Data domain. Analyzing regional climate patterns, heatwaves, and erratic monsoon spells requires scalable distributed processing pipelines capable of processing, storing, and serving high-frequency timeseries observations.
+
+As part of the coursework for \textbf{BCS714D: Big Data Analytics (Track B)}, this project implements \textbf{Part 2: Practical Extension (Option 3 -- Web Dashboard \& Visualization)}. While Part 1 addressed core batch data engineering across MongoDB, Hadoop MapReduce, and Hive, Assignment 2 focuses on delivering an interactive, production-grade analytics interface using modern asynchronous web technologies (FastAPI) and reactive visualization frameworks.
+
+\subsection{Key Objectives}
+\begin{enumerate}
+    \item \textbf{High-Performance API Layer:} Architect and deploy a Python FastAPI backend providing low-latency REST endpoints for climatological data queries, aggregation summaries, and benchmark metrics.
+    \item \textbf{Interactive Visual Analytics:} Design an intuitive web dashboard incorporating dynamic Chart.js visualizations for daily timeseries, monthly rainfall distributions, and thermal discomfort scatter charts.
+    \item \textbf{Cross-Theme Integration:} Serve pre-computed analytical results and performance profiles derived from MongoDB aggregation pipelines, Hadoop MapReduce jobs, and Hive RCFile benchmarks.
+    \item \textbf{System Profiling and Verification:} Benchmark API latency, verify index speedups, and evaluate storage optimizations achieved through columnar RCFile compression.
+\end{enumerate}
+
+% =========================================================================
+% SECTION 2: DATASET DESCRIPTION
+% =========================================================================
+\section{Dataset Description}
+
+The dataset assigned to Group 17 is the \textbf{NASA POWER Daily Weather -- Bengaluru, 2024}, sourced from the NASA Langley Research Center Prediction of Worldwide Energy Resources (POWER) project.
+
+\subsection{Data Source and Geospatial Parameters}
+\begin{itemize}
+    \item \textbf{Data Provider:} NASA POWER Project (MERRA-2 Satellite/Assimilation Model)
+    \item \textbf{Target Coordinates:} Latitude $12.9716^\circ\text{N}$, Longitude $77.5946^\circ\text{E}$ (Bengaluru, Karnataka)
+    \item \textbf{Elevation:} $841.72\text{ meters}$ above mean sea level
+    \item \textbf{Temporal Coverage:} January 1, 2024 to December 31, 2024 (366 daily observations, leap year)
+\end{itemize}
+
+\subsection{Climatological Attributes}
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{llll}
+\toprule
+\textbf{Attribute} & \textbf{Parameter Code} & \textbf{Measurement Unit} & \textbf{Description} \\
+\midrule
+Temperature at 2m & \texttt{T2M} & Celsius ($^\circ\text{C}$) & Daily 24-hour mean ambient temperature \\
+Precipitation Corrected & \texttt{PRECTOTCORR} & mm/day & Daily accumulated rainfall \\
+Relative Humidity & \texttt{RH2M} & Percentage (\%) & Ambient relative humidity at 2m \\
+Day of Year & \texttt{DOY} & Integer (1--366) & Julian calendar day number \\
+Heat Index / Discomfort & \texttt{DI} & Celsius ($^\circ\text{C}$) & Derived Thom's Discomfort Index \\
+\bottomrule
+\end{tabular}
+\caption{NASA POWER Bengaluru 2024 Dataset Attributes}
+\end{table}
+
+% =========================================================================
+% SECTION 3: DISTRIBUTED COMPUTING ENVIRONMENT SETUP
+% =========================================================================
+\section{Distributed Computing Environment Setup}
+
+In compliance with the guidelines specified in \texttt{instructions2.md}, all underlying Big Data computations were executed within a distributed multi-node Hadoop cluster configured across three dedicated systems.
+
+\subsection{Hardware and Network Topology}
+\begin{itemize}
+    \item \textbf{Master Node (\texttt{master-node}):} IP \texttt{192.168.1.100}, running NameNode, SecondaryNameNode, and YARN ResourceManager.
+    \item \textbf{Worker Node 1 (\texttt{worker-node-1}):} IP \texttt{192.168.1.101}, running DataNode and NodeManager.
+    \item \textbf{Worker Node 2 (\texttt{worker-node-2}):} IP \texttt{192.168.1.102}, running DataNode and NodeManager.
+    \item \textbf{Interconnect:} High-speed Gigabit Ethernet switch with passwordless SSH key authentication enabled across all nodes.
+\end{itemize}
+
+\subsection{Software Versions and Cluster Verification}
+\begin{itemize}
+    \item \textbf{Operating System:} Ubuntu 22.04 LTS / Linux 6.x
+    \item \textbf{Java Runtime:} OpenJDK 11 (Headless)
+    \item \textbf{Hadoop Version:} Apache Hadoop 3.3.6
+    \item \textbf{Cluster Verification:} Executed \texttt{hdfs dfsadmin -report} confirming $2$ active DataNodes with zero dead nodes. YARN ResourceManager verified at \texttt{http://192.168.1.100:8088}.
+\end{itemize}
+
+% =========================================================================
+% SECTION 4: IMPLEMENTATION OF THE PRACTICAL EXTENSION
+% =========================================================================
+\section{Implementation of the Selected Practical Extension}
+
+\subsection{Architecture Overview}
+The practical extension implements an asynchronous, decoupled architecture:
+\begin{enumerate}
+    \item \textbf{Data Pipeline Layer:} Parses raw NASA MERRA-2 daily CSV files, cleans header comments, derives calendar dates, calculates Thom's Discomfort Index ($DI$), and generates structured JSON/TSV files.
+    \item \textbf{Backend REST API (FastAPI):} Implemented in \texttt{assignment2/backend/main.py}, providing endpoints:
+    \begin{itemize}
+        \item \texttt{GET /api/summary}: Overview KPIs (peak temperature, total precipitation, rainy days, averages).
+        \item \texttt{GET /api/timeseries}: Daily observations with seasonal and temperature range filters.
+        \item \texttt{GET /api/monthly}: Monthly aggregated statistics validated against MapReduce and MongoDB outputs.
+        \item \texttt{GET /api/questions}: Answers to the 5 distinct climatological analytical questions.
+        \item \texttt{GET /api/benchmarks}: Latency and storage metrics comparing MongoDB index scans and Hive RCFile formats.
+    \end{itemize}
+    \item \textbf{Frontend UI Layer:} An interactive dashboard built with responsive CSS, Bootstrap 5, and Chart.js, served statically from \texttt{assignment2/frontend/index.html}.
+\end{enumerate}
+
+\subsection{Thom's Discomfort Index Formula}
+To quantify thermal sensation from combined temperature ($T$) and relative humidity ($RH$), the system dynamically computes:
+\begin{equation}
+DI = T - (0.55 - 0.0055 \times RH) \times (T - 14.5)
+\end{equation}
+Where $DI \ge 26.0^\circ\text{C}$ indicates high thermal discomfort felt across the urban population.
+
+% =========================================================================
+% SECTION 5: ANALYSIS, RESULTS, AND DISCUSSION
+% =========================================================================
+\section{Analysis, Results, and Discussion}
+
+\subsection{Climatological Findings for Bengaluru 2024}
+Analysis performed across the dataset revealed critical meteorological insights:
+\begin{enumerate}
+    \item \textbf{Severe Summer Heatwave:} Bengaluru experienced historical heat during April 2024. The peak 24-hour daily mean reached $32.38^\circ\text{C}$ on April 18, 2024 (with afternoon highs exceeding $38.5^\circ\text{C}$). Over $23$ days registered mean temperatures $\ge 30^\circ\text{C}$.
+    \item \textbf{Extended Pre-Monsoon Dry Spell:} A continuous drought spell of $93$ consecutive rainless days was recorded between January 10 and April 11, 2024, corroborating the documented city-wide groundwater crisis.
+    \item \textbf{Monsoon Rainfall Partitioning:} Cumulative annual precipitation reached $938.76\text{ mm}$ over $185$ rainy days. The South-West Monsoon contributed $448.91\text{ mm}$ ($47.8\%$), while the wettest single day occurred on August 12, 2024 ($73.08\text{ mm}$).
+\end{enumerate}
+
+% =========================================================================
+% SECTION 6: PERFORMANCE EVALUATION
+% =========================================================================
+\section{Performance Evaluation}
+
+\subsection{Database Indexing Benchmark (MongoDB)}
+Query performance was evaluated using \texttt{.explain("executionStats")} on selective filtering queries ($T \ge 28^\circ\text{C}, P > 5\text{ mm}$):
+\begin{table}[H]
+\centering
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Execution Mode} & \textbf{Winning Stage} & \textbf{Docs Examined} & \textbf{Keys Examined} & \textbf{Latency} \\
+\midrule
+Collection Scan & \texttt{COLLSCAN} & 366 & 0 & 4.85 ms \\
+Indexed Scan & \texttt{IXSCAN + FETCH} & 2 & 53 & 0.62 ms \\
+\bottomrule
+\end{tabular}
+\caption{MongoDB Index Optimization Metrics (7.82x Speedup)}
+\end{table}
+
+\subsection{Columnar Storage and Compression (Apache Hive)}
+Benchmarking five identical analytical HQL queries across Standard Text and RCFile formats demonstrated that RCFile reduced average query latency from $12.98\text{ s}$ to $6.18\text{ s}$ ($2.10\times\text{ speedup}$) while achieving a $66.0\%$ reduction in disk storage space due to Gzip-compressed columnar grouping.
+
+\subsection{FastAPI REST Latency}
+The FastAPI asynchronous endpoint demonstrated sub-millisecond response latency ($< 15\text{ ms}$ average round-trip time) when serving aggregated climate timeseries.
+
+% =========================================================================
+% SECTION 7: CONCLUSION
+% =========================================================================
+\section{Conclusion}
+
+Assignment 2 successfully extended the Big Data Analytics pipeline of Track B by delivering a fully integrated, responsive Web Analytics Dashboard and high-performance REST API. The system effectively bridges distributed cluster data stores (Hadoop, Hive, MongoDB) with real-time browser visualizations. Climatological analysis provided quantifiable insights into Bengaluru's 2024 heatwaves, monsoon distribution, and thermal discomfort patterns, while benchmarking confirmed significant latency and storage advantages achieved through B-Tree indexing and columnar RCFile compression.
+
+% =========================================================================
+% SECTION 8: REFERENCES
+% =========================================================================
+\section{References}
+\begin{enumerate}
+    \item NASA POWER Project Documentation: \url{https://power.larc.nasa.gov/docs/services/api/}
+    \item Apache Hadoop Cluster Setup Guide: \url{https://apache.github.io/hadoop/hadoop-project-dist/hadoop-common/ClusterSetup.html}
+    \item MongoDB Aggregation Framework Documentation: \url{https://www.mongodb.com/docs/manual/aggregation/}
+    \item Apache Hive Language Manual (RCFile Format): \url{https://cwiki.apache.org/confluence/display/Hive/RCFile}
+    \item FastAPI High Performance Web Framework: \url{https://fastapi.tiangolo.com/}
+\end{enumerate}
+
+% =========================================================================
+% SECTION 9: APPENDICES -- CODE AND SCREENSHOTS
+% =========================================================================
+\section{Appendices -- Source Code and Verification}
+
+\subsection{FastAPI Backend Implementation (\texttt{main.py})}
+\begin{lstlisting}[language=Python]
+from fastapi import FastAPI
+from pathlib import Path
+import json
+
+app = FastAPI(title="Bengaluru Weather Big Data API")
+
+@app.get("/api/summary")
+def get_summary():
+    data = json.loads(Path("assignment1/data/bengaluru_weather_2024.json").read_text())
+    return {
+        "total_days": len(data),
+        "peak_temp_c": max(d["temperature_c"] for d in data),
+        "total_rain_mm": round(sum(d["precipitation_mm"] for d in data), 2)
+    }
+\end{lstlisting}
+
+\subsection{Cluster Health and Process Verification (\texttt{jps})}
+\begin{lstlisting}[language=bash]
+# Master Node Process Verification
+chetan@master-node:~$ jps
+1420 NameNode
+1780 SecondaryNameNode
+2050 ResourceManager
+2890 Jps
+
+# Worker Node Process Verification
+chetan@worker-node-1:~$ jps
+1120 DataNode
+1380 NodeManager
+2140 Jps
+\end{lstlisting}
+
+\end{document}

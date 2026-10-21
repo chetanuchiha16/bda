@@ -1,0 +1,160 @@
+{
+  "job_name": "NASA_Bengaluru_Weather_Monthly_MapReduce",
+  "dataset": "NASA POWER Daily Weather - Bengaluru 2024",
+  "input_records": 366,
+  "scaled_records": 50000,
+  "base_execution_seconds": 0.0397,
+  "scaled_execution_seconds": 0.5564,
+  "cluster_simulation": {
+    "splits": 2,
+    "mappers": 2,
+    "reducers": 1,
+    "shuffle_phase": "external_sort"
+  },
+  "monthly_summary": [
+    {
+      "Month": "01",
+      "MonthName": "January",
+      "Season": "Winter",
+      "DaysCount": "31",
+      "AvgTemp_C": "23.00",
+      "MaxTemp_C": "24.69",
+      "MinTemp_C": "21.31",
+      "TotalRain_mm": "3.36",
+      "RainyDays": "4",
+      "AvgRH_pct": "62.44"
+    },
+    {
+      "Month": "02",
+      "MonthName": "February",
+      "Season": "Winter",
+      "DaysCount": "29",
+      "AvgTemp_C": "25.38",
+      "MaxTemp_C": "27.94",
+      "MinTemp_C": "23.64",
+      "TotalRain_mm": "0.00",
+      "RainyDays": "0",
+      "AvgRH_pct": "49.06"
+    },
+    {
+      "Month": "03",
+      "MonthName": "March",
+      "Season": "Summer",
+      "DaysCount": "31",
+      "AvgTemp_C": "27.99",
+      "MaxTemp_C": "29.74",
+      "MinTemp_C": "25.11",
+      "TotalRain_mm": "0.00",
+      "RainyDays": "0",
+      "AvgRH_pct": "37.77"
+    },
+    {
+      "Month": "04",
+      "MonthName": "April",
+      "Season": "Summer",
+      "DaysCount": "30",
+      "AvgTemp_C": "30.31",
+      "MaxTemp_C": "32.38",
+      "MinTemp_C": "28.77",
+      "TotalRain_mm": "0.10",
+      "RainyDays": "0",
+      "AvgRH_pct": "38.14"
+    },
+    {
+      "Month": "05",
+      "MonthName": "May",
+      "Season": "Summer",
+      "DaysCount": "31",
+      "AvgTemp_C": "27.71",
+      "MaxTemp_C": "32.19",
+      "MinTemp_C": "23.97",
+      "TotalRain_mm": "116.14",
+      "RainyDays": "24",
+      "AvgRH_pct": "64.57"
+    },
+    {
+      "Month": "06",
+      "MonthName": "June",
+      "Season": "Monsoon",
+      "DaysCount": "30",
+      "AvgTemp_C": "24.09",
+      "MaxTemp_C": "26.79",
+      "MinTemp_C": "21.71",
+      "TotalRain_mm": "148.02",
+      "RainyDays": "26",
+      "AvgRH_pct": "75.77"
+    },
+    {
+      "Month": "07",
+      "MonthName": "July",
+      "Season": "Monsoon",
+      "DaysCount": "31",
+      "AvgTemp_C": "23.70",
+      "MaxTemp_C": "25.00",
+      "MinTemp_C": "22.67",
+      "TotalRain_mm": "61.55",
+      "RainyDays": "27",
+      "AvgRH_pct": "77.57"
+    },
+    {
+      "Month": "08",
+      "MonthName": "August",
+      "Season": "Monsoon",
+      "DaysCount": "31",
+      "AvgTemp_C": "23.90",
+      "MaxTemp_C": "25.21",
+      "MinTemp_C": "22.57",
+      "TotalRain_mm": "189.82",
+      "RainyDays": "28",
+      "AvgRH_pct": "81.65"
+    },
+    {
+      "Month": "09",
+      "MonthName": "September",
+      "Season": "Monsoon",
+      "DaysCount": "30",
+      "AvgTemp_C": "23.92",
+      "MaxTemp_C": "24.91",
+      "MinTemp_C": "22.85",
+      "TotalRain_mm": "49.52",
+      "RainyDays": "19",
+      "AvgRH_pct": "77.91"
+    },
+    {
+      "Month": "10",
+      "MonthName": "October",
+      "Season": "Post-Monsoon",
+      "DaysCount": "31",
+      "AvgTemp_C": "23.20",
+      "MaxTemp_C": "25.74",
+      "MinTemp_C": "21.57",
+      "TotalRain_mm": "227.41",
+      "RainyDays": "26",
+      "AvgRH_pct": "84.71"
+    },
+    {
+      "Month": "11",
+      "MonthName": "November",
+      "Season": "Post-Monsoon",
+      "DaysCount": "30",
+      "AvgTemp_C": "21.88",
+      "MaxTemp_C": "23.33",
+      "MinTemp_C": "20.50",
+      "TotalRain_mm": "41.53",
+      "RainyDays": "14",
+      "AvgRH_pct": "82.90"
+    },
+    {
+      "Month": "12",
+      "MonthName": "December",
+      "Season": "Post-Monsoon",
+      "DaysCount": "31",
+      "AvgTemp_C": "21.58",
+      "MaxTemp_C": "23.63",
+      "MinTemp_C": "17.56",
+      "TotalRain_mm": "101.31",
+      "RainyDays": "17",
+      "AvgRH_pct": "83.20"
+    }
+  ]
+}

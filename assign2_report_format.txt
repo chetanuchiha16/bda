@@ -1,0 +1,81 @@
+VISVESVARAYA TECHNOLOGICAL UNIVERSITY
+Jnana Sangama, Santhibastawad Road, Machhe, Belagavi-590018, Karnataka, India
+
+Big Data
+
+Analytics
+
+2022 SCHEME - BCS714D
+ASSIGNMENT 2 REPORT
+ON
+
+“________(you need to fill your assignment topic here)_______”
+Submitted as part of the coursework for Big Data Analytics
+
+BACHELOR OF ENGINEERING
+in
+
+COMPUTER SCIENCE AND ENGINEERING
+For the Academic Year 2026 - 2027
+
+Team NO: _________________
+Name
+
+Signature of the Faculty:
+
+USN
+
+Signature
+
+Signature of HOD:
+
+Department of Computer Science and Engineering,
+JSS Academy of Technical Education,
+JSS Campus Rd, Dr. Vishnuvardhan Road, Bengaluru - 560060
+
+JSS Academy of Technical Education
+Department of Computer Science and Engineering
+TABLE OF CONTENTS – ASSIGNMENT 2
+S. No.
+
+Section Title
+
+1
+
+Introduction and Objectives
+
+2
+
+Dataset Description
+
+3
+
+Distributed Computing Environment Setup
+
+4
+
+Implementation of the Selected Practical Extension
+
+5
+
+Analysis, Results, and Discussion
+
+6
+
+Performance Evaluation (where applicable)
+
+7
+
+Conclusion
+
+8
+
+References
+
+9
+
+Appendices – Code and Screenshots
+
+Page No.
+
+
