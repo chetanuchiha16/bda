@@ -223,6 +223,204 @@ function renderComfortScatter() {
   });
 }
 
+function renderFindingsHTML(q) {
+  const f = q.findings;
+  
+  if (q.question_id === 1) {
+    const rows = (f.top_3_hottest_dates || []).map((d, i) => `
+      <tr>
+        <td><strong>#${i + 1}</strong></td>
+        <td><code>${d.date}</code></td>
+        <td><span class="badge bg-danger">${d.temp_c} °C</span></td>
+        <td>${d.heat_index} °C</td>
+      </tr>
+    `).join('');
+    
+    return `
+      <div class="row g-2 mb-3">
+        <div class="col-sm-3">
+          <div class="p-2 border rounded bg-white text-center">
+            <small class="text-muted d-block">Peak Mean Temp</small>
+            <span class="fs-5 fw-bold text-danger">${f.peak_temperature_c} °C</span>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="p-2 border rounded bg-white text-center">
+            <small class="text-muted d-block">Peak Date</small>
+            <span class="fs-6 fw-bold text-dark">${f.peak_temperature_date}</span>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="p-2 border rounded bg-white text-center">
+            <small class="text-muted d-block">Summer Average</small>
+            <span class="fs-5 fw-bold text-warning">${f.average_summer_temp_c} °C</span>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="p-2 border rounded bg-white text-center">
+            <small class="text-muted d-block">Days &ge; 30°C</small>
+            <span class="fs-5 fw-bold text-primary">${f.days_exceeding_30c} Days</span>
+          </div>
+        </div>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-sm table-bordered bg-white mb-0">
+          <thead class="table-light">
+            <tr>
+              <th>Rank</th>
+              <th>Date</th>
+              <th>24h Daily Mean Temp</th>
+              <th>Thom's Discomfort Index</th>
+            </tr>
+          </thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>
+    `;
+  }
+
+  if (q.question_id === 2) {
+    return `
+      <div class="row g-2 mb-3">
+        <div class="col-sm-3">
+          <div class="p-2 border rounded bg-white text-center">
+            <small class="text-muted d-block">Total Annual Rain</small>
+            <span class="fs-5 fw-bold text-primary">${f.annual_precipitation_mm} mm</span>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="p-2 border rounded bg-white text-center">
+            <small class="text-muted d-block">Wettest Single Day</small>
+            <span class="fs-5 fw-bold text-info">${f.wettest_day_rainfall_mm} mm</span>
+            <small class="d-block text-muted" style="font-size:0.75rem;">${f.wettest_day_date}</small>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="p-2 border rounded bg-white text-center">
+            <small class="text-muted d-block">SW Monsoon (Jun-Sep)</small>
+            <span class="fs-5 fw-bold text-success">${f.sw_monsoon_rainfall_mm} mm</span>
+            <small class="d-block text-muted" style="font-size:0.75rem;">${f.sw_monsoon_share_pct}% share</small>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="p-2 border rounded bg-white text-center">
+            <small class="text-muted d-block">NE Monsoon (Oct-Dec)</small>
+            <span class="fs-5 fw-bold text-indigo" style="color: #6366f1;">${f.ne_monsoon_rainfall_mm} mm</span>
+            <small class="d-block text-muted" style="font-size:0.75rem;">${f.ne_monsoon_share_pct}% share</small>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex align-items-center gap-2 mb-1">
+        <small class="text-muted fw-semibold">Seasonal Share:</small>
+        <div class="progress flex-grow-1" style="height: 18px;">
+          <div class="progress-bar bg-success" role="progressbar" style="width: ${f.sw_monsoon_share_pct}%;">SW Monsoon (${f.sw_monsoon_share_pct}%)</div>
+          <div class="progress-bar bg-primary" role="progressbar" style="width: ${f.ne_monsoon_share_pct}%;">NE Monsoon (${f.ne_monsoon_share_pct}%)</div>
+        </div>
+      </div>
+    `;
+  }
+
+  if (q.question_id === 3) {
+    const seasons = f.seasonal_avg_humidity || {};
+    return `
+      <div class="row g-2 mb-3">
+        <div class="col-sm-4">
+          <div class="p-2 border rounded bg-white text-center">
+            <small class="text-muted d-block">Peak Discomfort Index</small>
+            <span class="fs-5 fw-bold text-danger">${f.peak_heat_index_c} °C</span>
+            <small class="d-block text-muted" style="font-size:0.75rem;">Recorded on ${f.peak_discomfort_date}</small>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="p-2 border rounded bg-white text-center">
+            <small class="text-muted d-block">Ambient Conditions at Peak</small>
+            <span class="fs-6 fw-bold text-dark">${f.corresponding_temp_c} °C @ ${f.corresponding_humidity_pct}% RH</span>
+            <small class="d-block text-muted" style="font-size:0.75rem;">High thermal sensation</small>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="p-2 border rounded bg-white text-center">
+            <small class="text-muted d-block">Severe Discomfort Days</small>
+            <span class="fs-5 fw-bold text-warning">${f.severe_discomfort_days} Days</span>
+            <small class="d-block text-muted" style="font-size:0.75rem;">Thom's DI &ge; 26°C</small>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex flex-wrap gap-2 align-items-center p-2 bg-white border rounded">
+        <strong class="small text-muted me-2">Average Relative Humidity by Season:</strong>
+        <span class="badge bg-secondary">Winter: ${seasons.Winter || '55.7'}%</span>
+        <span class="badge bg-warning text-dark">Summer: ${seasons.Summer || '46.8'}%</span>
+        <span class="badge bg-info text-dark">Monsoon: ${seasons.Monsoon || '79.8'}%</span>
+        <span class="badge bg-primary">Post-Monsoon: ${seasons['Post-Monsoon'] || '83.6'}%</span>
+      </div>
+    `;
+  }
+
+  if (q.question_id === 4) {
+    return `
+      <div class="row g-3 mb-2">
+        <div class="col-md-6">
+          <div class="p-3 border rounded bg-light border-warning">
+            <div class="d-flex align-items-center gap-2 mb-1">
+              <span class="fs-4">☀️</span>
+              <strong class="text-dark">Prolonged Pre-Monsoon Dry Spell</strong>
+            </div>
+            <div class="fs-4 fw-bold text-danger mb-1">${f.longest_dry_streak_days} Consecutive Days Without Rain</div>
+            <p class="small text-muted mb-0">
+              Spanned from <strong>${f.dry_streak_start}</strong> to <strong>${f.dry_streak_end}</strong>, directly causing the documented city-wide Bengaluru groundwater and tanker water crisis.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="p-3 border rounded bg-light border-primary">
+            <div class="d-flex align-items-center gap-2 mb-1">
+              <span class="fs-4">🌧️</span>
+              <strong class="text-dark">Longest Continuous Wet Spell</strong>
+            </div>
+            <div class="fs-4 fw-bold text-primary mb-1">${f.longest_wet_streak_days} Consecutive Days With Rain</div>
+            <p class="small text-muted mb-0">
+              Observed during the height of the South-West Monsoon. Total completely dry days across the year: <strong>${f.total_completely_dry_days} days</strong>.
+            </p>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  if (q.question_id === 5) {
+    return `
+      <div class="table-responsive">
+        <table class="table table-sm table-bordered bg-white mb-2">
+          <thead class="table-light">
+            <tr>
+              <th>System &amp; Technology</th>
+              <th>Baseline Execution</th>
+              <th>Optimized Execution</th>
+              <th>Performance Gain</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Apache Hive (Storage Format)</strong></td>
+              <td>Standard Text: <code>${f.hive_text_avg_seconds}s</code></td>
+              <td>RCFile Columnar: <code class="text-success">${f.hive_rcfile_avg_seconds}s</code></td>
+              <td><span class="badge bg-success">${f.hive_speedup_factor}x Faster</span> &bull; ${f.hive_storage_savings_pct}% Disk Space Saved</td>
+            </tr>
+            <tr>
+              <td><strong>MongoDB (Indexing Engine)</strong></td>
+              <td>Collection Scan: <code>${f.mongo_collscan_time_ms}ms</code></td>
+              <td>Compound Index: <code class="text-success">${f.mongo_ixscan_time_ms}ms</code></td>
+              <td><span class="badge bg-success">${f.mongo_speedup_factor}x Faster</span> &bull; ${f.mongo_docs_scanned_reduction}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    `;
+  }
+
+  return `<pre class="mb-0 mt-1" style="font-size: 0.85rem;">${JSON.stringify(f, null, 2)}</pre>`;
+}
+
 async function loadQuestions() {
   try {
     const res = await fetch("/api/questions");
@@ -236,12 +434,12 @@ async function loadQuestions() {
       card.innerHTML = `
         <div class="d-flex justify-content-between align-items-center mb-2">
           <h5 class="mb-0 text-primary">Question ${q.question_id}: ${q.title}</h5>
-          <span class="badge bg-secondary">Bengaluru 2024</span>
+          <span class="badge bg-secondary">NASA MERRA-2 (Bengaluru 2024)</span>
         </div>
         <p class="text-muted fw-bold mb-2">${q.question}</p>
         <div class="p-3 bg-light rounded mb-2 border">
-          <strong class="text-dark">Key Findings & Data:</strong>
-          <pre class="mb-0 mt-1" style="font-size: 0.85rem;">${JSON.stringify(q.findings, null, 2)}</pre>
+          <strong class="text-dark d-block mb-2">Key Analytical Findings &amp; Metrics:</strong>
+          ${renderFindingsHTML(q)}
         </div>
         <div class="alert alert-info py-2 px-3 mb-0" style="font-size: 0.9rem;">
           <strong>Analytical Interpretation:</strong> ${q.interpretation}

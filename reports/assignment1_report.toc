@@ -1,0 +1,31 @@
+\contentsline {section}{\numberline {1}Introduction and Objectives}{2}{section*.1}%
+\contentsline {section}{\numberline {2}Hardware and Software Requirements}{2}{section*.6}%
+\contentsline {section}{\numberline {3}Hadoop Cluster Setup, Configuration, and Verification}{3}{section*.8}%
+\contentsline {subsection}{\numberline {3.1}Configuration Summary}{3}{subsection*.9}%
+\contentsline {subsection}{\numberline {3.2}Verification}{3}{subsection*.10}%
+\contentsline {section}{\numberline {4}Dataset Description and Preparation}{4}{section*.12}%
+\contentsline {section}{\numberline {5}Theme 1: MongoDB Big Data Processing and Analytics}{4}{section*.13}%
+\contentsline {subsection}{\numberline {5.1}Ingestion and Compound Indexing}{4}{subsection*.14}%
+\contentsline {subsection}{\numberline {5.2}Aggregation Pipelines}{5}{subsection*.15}%
+\contentsline {subsection}{\numberline {5.3}Query Profiling via \texttt {.explain("executionStats")}}{5}{subsection*.19}%
+\contentsline {section}{\numberline {6}Theme 2: Hadoop File Management and MapReduce Analytics}{6}{section*.21}%
+\contentsline {subsection}{\numberline {6.1}HDFS Operations}{6}{subsection*.22}%
+\contentsline {subsection}{\numberline {6.2}MapReduce Implementation on YARN}{6}{subsection*.30}%
+\contentsline {section}{\numberline {7}Theme 3: Pig Latin and Hive RCFile Performance Analytics}{7}{section*.32}%
+\contentsline {subsection}{\numberline {7.1}Data Transformation in Apache Pig}{7}{subsection*.33}%
+\contentsline {subsection}{\numberline {7.2}Hive Storage Comparison: Standard Text vs. RCFile}{7}{subsection*.34}%
+\contentsline {subsection}{\numberline {7.3}Benchmarking Results}{7}{subsection*.35}%
+\contentsline {section}{\numberline {8}Dataset Analysis: Five Distinct Analytical Inquiries}{7}{section*.37}%
+\contentsline {subsection}{\numberline {8.1}Question 1: Summer 2024 Thermal Extremes in Bengaluru}{7}{subsection*.38}%
+\contentsline {subsection}{\numberline {8.2}Question 2: Monsoon Precipitation Distribution}{8}{subsection*.39}%
+\contentsline {subsection}{\numberline {8.3}Question 3: Humidity-Temperature Dynamics and Discomfort}{8}{subsection*.40}%
+\contentsline {subsection}{\numberline {8.4}Question 4: Climatological Spell Analysis}{8}{subsection*.41}%
+\contentsline {subsection}{\numberline {8.5}Question 5: Cross-System Big Data Performance Profiling}{8}{subsection*.42}%
+\contentsline {section}{\numberline {9}Results and Discussion}{9}{section*.44}%
+\contentsline {section}{\numberline {10}Conclusion}{9}{section*.45}%
+\contentsline {section}{\numberline {11}References}{9}{section*.46}%
+\contentsline {section}{\numberline {12}Appendices: Source Code and Commands}{9}{section*.51}%
+\contentsline {subsection}{\numberline {12.1}Hadoop Streaming MapReduce Mapper (\texttt {mapper.py})}{9}{subsection*.52}%
+\contentsline {subsection}{\numberline {12.2}Pig Latin Data Cleaning (\texttt {clean\_weather.pig})}{10}{subsection*.62}%
+\contentsline {subsection}{\numberline {12.3}Interactive Timeseries \& Weather Visualizations}{10}{subsection*.67}%
+\contentsline {subsection}{\numberline {12.4}Distributed Cluster Setup Verification}{11}{subsection*.69}%

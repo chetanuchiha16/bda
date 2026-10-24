@@ -183,6 +183,12 @@ A dedicated 3-node distributed cluster was configured in the college laboratory 
 \subsection{Verification}
 Cluster health was validated using \texttt{hdfs dfsadmin -report}, confirming $2$ live DataNodes, total raw capacity of $931.5\text{ GB}$, and zero block corruption.
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{screenshots/hdfs_datanodes.png}
+    \caption{Hadoop HDFS Cluster Web UI showing 2 Active Worker DataNodes and Storage Health}
+\end{figure}
+
 % =========================================================================
 % SECTION 4: DATASET DESCRIPTION AND PREPARATION
 % =========================================================================
@@ -222,6 +228,12 @@ Benchmarking a selective query ($T \ge 28^\circ\text{C}, P > 5\text{ mm}$) revea
     \item \textbf{Indexed Scan (\texttt{IXSCAN}):} Traversed B-Tree keys, inspecting only $53$ keys and fetching $2$ documents in $0.62\text{ ms}$ (a \textbf{7.82x acceleration}).
 \end{itemize}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{screenshots/dashboard_benchmarks.png}
+    \caption{Performance Benchmarking Console: MongoDB Index Acceleration and Hive Storage Analysis}
+\end{figure}
+
 % =========================================================================
 % SECTION 6: THEME 2 -- HADOOP FILE MANAGEMENT AND MAPREDUCE
 % =========================================================================
@@ -244,6 +256,12 @@ Implemented streaming MapReduce in Python:
     \item \textbf{Mapper (\texttt{mapper.py}):} Emitted key \texttt{Month$\backslash$tSeason} and value \texttt{temp$\backslash$tprecip$\backslash$trh$\backslash$t1}.
     \item \textbf{Reducer (\texttt{reducer.py}):} Iterated through partitioned keys, computing monthly averages, maximums, rainfall totals, and rainy day frequencies without buffering entire groupings in memory.
 \end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{screenshots/yarn_mapreduce_success.png}
+    \caption{YARN ResourceManager Web UI showing MapReduce Application Successfully Completed}
+\end{figure}
 
 % =========================================================================
 % SECTION 7: THEME 3 -- PIG LATIN AND HIVE RCFILE ANALYTICS
@@ -300,6 +318,12 @@ Q5 (Rain Severity Distribution) & 12.65 s & 5.60 s & 2.26x & 66.0\% \\
 \subsection{Question 5: Cross-System Big Data Performance Profiling}
 \textbf{Finding:} RCFile reduced query latency by $52.4\%$ ($2.10\times\text{ speedup}$) and saved $66.0\%$ disk space in Hive. MongoDB compound indexing provided a $7.82\times$ acceleration over full collection scans.
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{screenshots/dashboard_questions.png}
+    \caption{Interactive Domain Analytics Interface Presenting the Five Meteorological Inquiries}
+\end{figure}
+
 % =========================================================================
 % SECTION 9: RESULTS AND DISCUSSION
 % =========================================================================
@@ -346,5 +370,19 @@ raw = LOAD '$INPUT' USING PigStorage('\t') AS (record_id:int, date:chararray, ye
 clean = FILTER raw BY temp IS NOT NULL AND temp > -50.0 AND rh >= 0.0 AND precip >= 0.0;
 STORE clean INTO '$OUTPUT' USING PigStorage('\t');
 \end{lstlisting}
+
+\subsection{Interactive Timeseries \& Weather Visualizations}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{screenshots/dashboard_timeseries.png}
+    \caption{Interactive Timeseries Dashboard showing Annual KPIs and Thermal Profiles}
+\end{figure}
+
+\subsection{Distributed Cluster Setup Verification}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{screenshots/dashboard_cluster_evidence.png}
+    \caption{Multi-Node Cluster Topology and Verification Console}
+\end{figure}
 
 \end{document}

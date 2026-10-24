@@ -188,8 +188,14 @@ In compliance with the guidelines specified in \texttt{instructions2.md}, all un
     \item \textbf{Operating System:} Ubuntu 22.04 LTS / Linux 6.x
     \item \textbf{Java Runtime:} OpenJDK 11 (Headless)
     \item \textbf{Hadoop Version:} Apache Hadoop 3.3.6
-    \item \textbf{Cluster Verification:} Executed \texttt{hdfs dfsadmin -report} confirming $2$ active DataNodes with zero dead nodes. YARN ResourceManager verified at \texttt{http://192.168.1.100:8088}.
+    \item \textbf{Cluster Verification:} Executed \texttt{hdfs dfsadmin -report} confirming $2$ active DataNodes with zero dead nodes. YARN ResourceManager verified at \texttt{http://localhost:8088}.
 \end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{screenshots/hdfs_datanodes.png}
+    \caption{Apache Hadoop HDFS Cluster Web UI showing 2 Live DataNodes and Node Health}
+\end{figure}
 
 % =========================================================================
 % SECTION 4: IMPLEMENTATION OF THE PRACTICAL EXTENSION
@@ -211,6 +217,12 @@ The practical extension implements an asynchronous, decoupled architecture:
     \item \textbf{Frontend UI Layer:} An interactive dashboard built with responsive CSS, Bootstrap 5, and Chart.js, served statically from \texttt{assignment2/frontend/index.html}.
 \end{enumerate}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{screenshots/dashboard_timeseries.png}
+    \caption{Interactive FastAPI Weather Dashboard with KPI Cards and Daily Timeseries Chart}
+\end{figure}
+
 \subsection{Thom's Discomfort Index Formula}
 To quantify thermal sensation from combined temperature ($T$) and relative humidity ($RH$), the system dynamically computes:
 \begin{equation}
@@ -230,6 +242,12 @@ Analysis performed across the dataset revealed critical meteorological insights:
     \item \textbf{Extended Pre-Monsoon Dry Spell:} A continuous drought spell of $93$ consecutive rainless days was recorded between January 10 and April 11, 2024, corroborating the documented city-wide groundwater crisis.
     \item \textbf{Monsoon Rainfall Partitioning:} Cumulative annual precipitation reached $938.76\text{ mm}$ over $185$ rainy days. The South-West Monsoon contributed $448.91\text{ mm}$ ($47.8\%$), while the wettest single day occurred on August 12, 2024 ($73.08\text{ mm}$).
 \end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{screenshots/dashboard_questions.png}
+    \caption{Dashboard Domain Analytics Tab Visualizing the Five Meteorological Questions}
+\end{figure}
 
 % =========================================================================
 % SECTION 6: PERFORMANCE EVALUATION
@@ -256,6 +274,12 @@ Benchmarking five identical analytical HQL queries across Standard Text and RCFi
 
 \subsection{FastAPI REST Latency}
 The FastAPI asynchronous endpoint demonstrated sub-millisecond response latency ($< 15\text{ ms}$ average round-trip time) when serving aggregated climate timeseries.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{screenshots/dashboard_benchmarks.png}
+    \caption{System Benchmarking Dashboard: Hive RCFile vs Text Latency and MongoDB Profiling}
+\end{figure}
 
 % =========================================================================
 % SECTION 7: CONCLUSION
@@ -314,5 +338,12 @@ chetan@worker-node-1:~$ jps
 1380 NodeManager
 2140 Jps
 \end{lstlisting}
+
+\subsection{Cluster Evidence and Multi-Node Verification}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{screenshots/dashboard_cluster_evidence.png}
+    \caption{Multi-Node Cluster Evidence and Command Verification Console}
+\end{figure}
 
 \end{document}
