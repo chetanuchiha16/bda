@@ -3,8 +3,8 @@
   "dataset": "NASA POWER Daily Weather - Bengaluru 2024",
   "input_records": 366,
   "scaled_records": 50000,
-  "base_execution_seconds": 0.0397,
-  "scaled_execution_seconds": 0.5564,
+  "base_execution_seconds": 0.0833,
+  "scaled_execution_seconds": 0.7002,
   "cluster_simulation": {
     "splits": 2,
     "mappers": 2,

@@ -139,25 +139,27 @@ Open that URL in your browser to interact with:
 
 ## 4. Local Laptop Execution (Testing at Home Without Hadoop)
 
-You don't need Hadoop or 3 systems to test your code at home. All scripts have built-in local execution engines:
+You don't need Hadoop or 3 systems to test your code at home. All scripts have built-in local execution engines that you can run with `make`:
 
 ```bash
-# 1. Prepare and enrich the dataset:
-uv run python assignment1/data/prepare_data.py
+# Display all available Makefile commands:
+make help
 
-# 2. Test Theme 1 (MongoDB Aggregations & Profiling):
-uv run python assignment1/theme1_mongodb/aggregation_queries.py
-uv run python assignment1/theme1_mongodb/explain_profiling.py
+# 1. Run the full Assignment 1 pipeline (Data + Theme 1 + Theme 2 + Theme 3 + Analytics):
+make assignment1
 
-# 3. Test Theme 2 (MapReduce streaming test):
-uv run python assignment1/theme2_hadoop_mapreduce/execute_mapreduce.py
+# 2. Or run individual themes:
+make data        # Prepares and enriches NASA weather data
+make theme1       # MongoDB aggregations & profiling
+make theme2       # MapReduce streaming test
+make theme3       # Hive Text vs RCFile benchmarks
+make analytics    # 5 domain analytical questions
 
-# 4. Test Theme 3 (Hive Benchmark & 5 Questions):
-uv run python assignment1/theme3_pig_hive/hive_benchmark.py
-uv run python assignment1/analytics_questions.py
+# 3. Launch the Assignment 2 FastAPI Dashboard:
+make run          # (or make assignment2) -> open http://localhost:8000
 
-# 5. Launch the Assignment 2 FastAPI Dashboard:
-uv run uvicorn assignment2.backend.main:app --reload --port 8000
+# 4. Compile the PDF reports:
+make reports
 ```
 
 ---

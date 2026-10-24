@@ -8,14 +8,37 @@
 
 ## Quick Start (Run FastAPI Dashboard)
 
-Run the interactive analytics dashboard with a single command using `uv`:
+Run the interactive analytics dashboard with a single command:
 
 ```bash
-uv run uvicorn assignment2.backend.main:app --reload --port 8000
+make run
 ```
+*(Or `uv run uvicorn assignment2.backend.main:app --reload --port 8000`)*
 
 Then open your browser to:  
 👉 **`http://localhost:8000`**
+
+---
+
+## Makefile Command Reference
+
+A comprehensive `Makefile` is provided to run every step of the project:
+
+| Command | Action Description |
+| :--- | :--- |
+| **`make help`** | Lists all available targets with descriptions |
+| **`make run`** (or `make assignment2`) | Launches the FastAPI interactive dashboard at port 8000 |
+| **`make assignment1`** | Runs Themes 1, 2, 3 and the 5 analytical questions in sequence |
+| **`make data`** | Prepares and enriches NASA weather dataset (generates CSV, TSV, JSON, Scaled) |
+| **`make theme1`** | Runs MongoDB ingestion, aggregation pipelines, and index profiling |
+| **`make theme2`** | Runs Hadoop MapReduce streaming harness & YARN simulation |
+| **`make theme3`** | Runs Apache Hive Text vs RCFile storage and query benchmarks |
+| **`make analytics`** | Computes the 5 distinct climatological domain inquiries |
+| **`make reports`** | Compiles both LaTeX reports (`assignment1_report.pdf` & `assignment2_report.pdf`) |
+| **`make all`** | Runs the complete end-to-end pipeline: data -> themes -> analytics -> reports |
+| **`make lab-setup`** | Launches the 3-node Hadoop cluster auto-configurator for college lab |
+| **`make lab-run`** | Runs all themes on physical cluster & launches UI |
+| **`make clean`** | Removes cache files, logs, and LaTeX auxiliary files |
 
 ---
 
